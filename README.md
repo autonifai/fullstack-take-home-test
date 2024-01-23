@@ -73,7 +73,7 @@ Your validation console should consume the endpoints exposed by this project.
 
 ## Which tech stack should I use?
 - Frontend: React
-- Backend: Python + FastAPI + SQLAlchemy _(already implemented in the starter project)_
+- Backend: Python + FastAPI + SQLAlchemy _(provided in the starter project)_
 
 ## How should I submit my code?
 - You should zip your solution and e-mail it to conor@autonifai.com. The title of the e-mail should say `THT solution`
