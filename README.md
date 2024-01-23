@@ -26,16 +26,18 @@ First, please start by looking at the wireframes provided in this repo, they sho
 
 **Wireframe:** [link](./wireframes/feature_01_list_invoices.jpg)
 
+**Backend endpoint:** `GET /invoices`
+
 You should implement a table with 5 columns: **Invoice Number**, **Vendor Name**, **Invoice Description**, **Due Date**, and **Amount**.
 
 Each row of this table should have a `Review` button.
-
-This list is fed by the `/invoices` endpoint present in the backend project, which will be mentioned below.
 
 ### 2. Display invoice details
 **Requirement:** implement a page that displays an invoice details.
 
 **Wireframe:** [link](./wireframes/feature_02_display_invoice_details.jpg)
+
+**Backend endpoint:** `GET /invoices?invoice_id={id}`
 
 As mentioned before, each row in the invoice list has a `Review` button. When this button is clicked, the invoice details should be displayed. 
 
@@ -43,17 +45,26 @@ The invoice details screen has 2 sections: `Vendor Details` and `Invoice Details
 
 At the bottom, it has 2 buttons: `Validate` and `Reject`, which modify the status of the invoice. 
 
-The vendor details and invoice details are provided by the `TBDXXX` endpoints respectively. To approve or reject an invoice, issue a POST or DELETE HTTP request to the already existing 
-`/invoices/<id>/approval` endpoint.
+### 3. Change invoice status
 
-### 3. Visualize PDF
+**Requirement:** implement buttons that approve or reject an invoice.
+
+**Wireframe:** [link](./wireframes/feature_02_display_invoice_details.jpg)
+
+**Backend endpoints:** `POST /invoices/{id}/approval` | `DELETE /invoices/{id}/approval`
+
+To approve or reject an invoice, we offer two separate buttons, which call the respective API endpoints.
+
+### 4. Visualize PDF
 **Requirement:** implement an endpoint that exposes a PDF, along with respective UI component.
 
 **Wireframe:** [link](./wireframes/feature_03_visualize_pdf.jpg)
 
+**Backend endpoints:** To be built
+
 When the invoice details page is loaded, you also need to display the respective PDF.
 
-PDF files are stored on Amazon S3, on the `s3://take-home-test-data/` bucket. You'll need to create an endpoint in the backend project that connects to S3 and allows the frontend to fetch the PDF for visualization.
+PDF files are stored on Amazon S3, on the `s3://take-home-test-data/` public bucket. You'll need to create an endpoint in the backend project that connects to S3 and allows the frontend to fetch the PDF for visualization.
 
 ## Backend project
 We provide you with a [backend starter project](https://github.com/autonifai/fullstack-test-backend), which provides the endpoints you'll need to list invoices and display an invoice's details. 
