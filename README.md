@@ -23,6 +23,7 @@ First, please start by looking at the wireframes provided in this repo, they sho
 
 ### 1. List invoices
 **Requirement:** implement a table that lists invoices present in the database.
+
 **Wireframe:** [link](./wiremocks/feature_01_list_invoices.jpg)
 
 You should implement a table with 5 columns: **Invoice Number**, **Vendor Name**, **Invoice Description**, **Due Date**, and **Amount**.
@@ -33,6 +34,7 @@ This list is fed by the `/invoices` endpoint present in the backend project, whi
 
 ### 2. Display invoice details
 **Requirement:** implement a page that displays an invoice details.
+
 **Wireframe:** [link](./wiremocks/feature_02_display_invoice_details.jpg)
 
 As mentioned before, each row in the invoice list has a `Review` button. When this button is clicked, the invoice details should be displayed. 
@@ -46,6 +48,7 @@ The vendor details and invoice details are provided by the `TBDXXX` endpoints re
 
 ### 3. Visualize PDF
 **Requirement:** implement an endpoint that exposes a PDF, along with respective UI component.
+
 **Wireframe:** [link](./wiremocks/feature_03_visualize_pdf.jpg)
 
 When the invoice details page is loaded, you also need to display the respective PDF.
