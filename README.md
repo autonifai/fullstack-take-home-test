@@ -2,10 +2,10 @@
 > Take Home Test for fullstack candidates to Autonifai
 
 ## Hello! 👋
-Hello, there! Welcome to Autonifai and to our Take Home Test. We're excited to have you going thru our recruiting process, hope you enjoy it! :) 
+Hello, there! Welcome to Autonifai and to our Take Home Test. We're excited to have you going through our recruiting process, hope you enjoy it! :) 
 
 ## What are you required to do?
-- Build a validation console for invoices
+- Build the Frontend for a validation console for invoices
 - Increment the backend with any new endpoints required to deliver the required features
 
 As you know, Autonifai provides automation solutions for accounting and finance teams. Validating invoices takes up a considerable amount of time of our users, and we want to make their lives easier with an easy to use app.
@@ -76,7 +76,7 @@ Your validation console should consume the endpoints exposed by this project.
 - Backend: Python + FastAPI + SQLAlchemy _(provided in the starter project)_
 
 ## How should I submit my code?
-- You should zip your solution and e-mail it to conor@autonifai.com. The title of the e-mail should say `THT solution`
+- You should zip your solution and e-mail it to conor@autonifai.com. The title of the e-mail should say `THT solution - Your Name`
 - We expect your zip to contain two folders: `fullstack-test-frontend` and `fullstack-test-backend`
 
 ## Questions & troubleshooting
