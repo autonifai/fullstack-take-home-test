@@ -5,8 +5,9 @@
 Hello, there! Welcome to Autonifai and to our Take Home Test. We're excited to have you going through our recruiting process, hope you enjoy it! :) 
 
 ## What are you required to do?
-- Build the Frontend for a validation console for invoices
-- Increment the backend with any new endpoints required to deliver the required features
+There are two distinct tasks for you to complete here:
+- Build a Frontend page for a validating the data we automatically extract from invoices
+- Increment the backend with an additional endpoint for retrieving PDFs from S3 for display
 
 As you know, Autonifai provides automation solutions for accounting and finance teams. Validating invoices takes up a considerable amount of time of our users, and we want to make their lives easier with an easy to use app.
 
@@ -17,6 +18,13 @@ As you know, Autonifai provides automation solutions for accounting and finance 
 - Assess your proficiency in writing code
 - Assess your proficiency in working with automated tests
 - Assess your proficiency in documenting & explaning your solution
+
+## How will you be graded:
+There are four criteria that we'll grade your work on:
+- How well you followed the instructions provided
+- The quality of the code written
+- The quality and coverage of any automated tests
+- How well you've documented & explained the solution
 
 ## Features
 First, please start by looking at the wireframes provided in this repo, they should provide you with good enough guidance to the work you're required to do. Please ignore colors, icons, etc, this is a medium-fidelity wireframe. Focus on the features and feel free to implement the interaction patterns you think fit best the problem.
@@ -76,8 +84,8 @@ Your validation console should consume the endpoints exposed by this project.
 - Backend: Python + FastAPI + SQLAlchemy _(provided in the starter project)_
 
 ## How should I submit my code?
-- You should zip your solution and e-mail it to conor@autonifai.com. The title of the e-mail should say `THT solution - Your Name`
-- We expect your zip to contain two folders: `fullstack-test-frontend` and `fullstack-test-backend`
+- Please fork both repos (`fullstack-test-frontend` and `fullstack-test-backend`) and create a pull request with your changes
+- Add Jan (jrocek1) and Felipe (felipecao) as reviewers to your pull request
 
 ## Questions & troubleshooting
 If you need support or have any questions, please reach out to your recruiter. We'll get back to you ASAP.
