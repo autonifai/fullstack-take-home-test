@@ -6,7 +6,11 @@ function InvoicesListing() {
 }
 
 function App() {
-  return <InvoicesListing />;
+  return (
+    <div className="App">
+      <InvoicesListing />
+    </div>
+  );
 }
 
 export default App;
