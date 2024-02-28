@@ -1,6 +1,7 @@
 const commands = {
   '*': () => 'prettier --write .',
-  '*.ts': () => 'eslint --fix',
+  '*.{ts,tsx,js,jsx}': () => 'eslint --fix',
+  'src/*.{ts,tsx,js,jsx}': () => 'npm test -- --watchAll=false',
   'package.json': () => 'git add package-lock.json',
 };
 
