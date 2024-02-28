@@ -1,9 +1,6 @@
 import React from 'react';
 import './App.css';
-
-function InvoicesListing() {
-  return <>Loading</>;
-}
+import InvoicesListing from './3-ui/InvoicesListing';
 
 function App() {
   return (
