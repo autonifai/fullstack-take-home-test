@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import CUD from './InvoicesTable';
-import { InvoicesProvider } from '../../2-stores/use-invoices';
-import InvoicesStore from '../../2-stores/use-invoices/invoices.store';
-import InvoiceFactory from '../../1-models/invoice/invoice.factory';
+import CUD from '.';
+import { InvoicesProvider } from '../../../2-stores/use-invoices';
+import InvoicesStore from '../../../2-stores/use-invoices/invoices.store';
+import InvoiceFactory from '../../../1-models/invoice/invoice.factory';
 
 type Props = {
   size: number;

@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite';
-import useInvoices from '../../2-stores/use-invoices';
-import { Invoice } from '../../1-models/invoice/invoice.schema';
+import useInvoices from '../../../2-stores/use-invoices';
+import { Invoice } from '../../../1-models/invoice/invoice.schema';
+
+import styles from './InvoicesTable.module.scss';
 
 type Props = {
   invoices: Invoice[];
@@ -17,7 +19,7 @@ function Information({ invoice }: InformationProps) {
       <td>{invoice.vendor}</td>
       <td>{invoice.description}</td>
       <td>{invoice.due_date.toLocaleString()}</td>
-      <td>{invoice.total_amount}</td>
+      <td className={styles.number}>{invoice.total_amount}</td>
     </tr>
   );
 }
@@ -28,7 +30,7 @@ function Content({ invoices }: Props) {
   }
 
   return (
-    <table data-testid="invoices-listing">
+    <table className={styles.table} data-testid="invoices-listing">
       <thead>
         <tr>
           <th>Invoice Number</th>
