@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx';
+import { Invoice } from '../../1-models/invoice/invoice.schema';
 
-type Data = Record<string, number>;
+type Data = Record<string, Invoice>;
 
 class InvoicesStore {
   constructor() {
@@ -8,7 +9,7 @@ class InvoicesStore {
   }
 
   private _data: Data = {};
-  private _memo: number[] | undefined;
+  private _memo: Invoice[] | undefined;
 
   get invoices() {
     if (!this._memo) {
@@ -18,16 +19,16 @@ class InvoicesStore {
     return this._memo;
   }
 
-  setData = (invoices: number[]) => {
+  setData = (invoices: Invoice[]) => {
     this._memo = undefined;
     this._data = invoices.reduce<Data>(normalize, {});
   };
 }
 
-function normalize(data: Data, invoice: number): Data {
+function normalize(data: Data, invoice: Invoice): Data {
   return {
     ...data,
-    [invoice]: invoice,
+    [invoice.id]: invoice,
   };
 }
 

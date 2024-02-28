@@ -1,23 +1,27 @@
 import { observer } from 'mobx-react-lite';
 import useInvoices from '../../2-stores/use-invoices';
-
-const number = 'test';
-const vendor_number = 'test';
-const description = 'test';
-const due_date = 'test';
-const amount = 'test';
+import { Invoice } from '../../1-models/invoice/invoice.schema';
 
 type Props = {
-  invoices: number[];
+  invoices: Invoice[];
 };
 
-/** TEST NOTE
- * Despite being used as "InvoiceListing" externally,
- * you'll notice that the inner implementation is a table
- *
- * No problem in this because the internal components should be able to have any implementation that satisfies their purpose,
- * in this case, showing a list of invoices
- */
+type InformationProps = {
+  invoice: Invoice;
+};
+
+function Information({ invoice }: InformationProps) {
+  return (
+    <tr data-testid={`invoice-${invoice.id}`}>
+      <td>{invoice.number}</td>
+      <td>{invoice.vendor}</td>
+      <td>{invoice.description}</td>
+      <td>{invoice.due_date.toLocaleString()}</td>
+      <td>{invoice.total_amount}</td>
+    </tr>
+  );
+}
+
 function Content({ invoices }: Props) {
   if (!invoices.length) {
     return <>There are no invoices to review</>;
@@ -36,19 +40,20 @@ function Content({ invoices }: Props) {
       </thead>
       <tbody>
         {invoices.map((invoice) => (
-          <tr key={invoice} data-testid={`invoice-${number}`}>
-            <td>{number}</td>
-            <td>{vendor_number}</td>
-            <td>{description}</td>
-            <td>{due_date}</td>
-            <td>{amount}</td>
-          </tr>
+          <Information key={invoice.id} invoice={invoice} />
         ))}
       </tbody>
     </table>
   );
 }
 
+/** TEST NOTE
+ * Despite being used as "InvoiceListing" externally,
+ * you'll notice that the inner implementation is a table
+ *
+ * No problem in this because the internal components should be able to have any implementation that satisfies their purpose,
+ * in this case, showing a list of invoices
+ */
 const InvoicesTable = observer(() => {
   const { invoices } = useInvoices();
 
