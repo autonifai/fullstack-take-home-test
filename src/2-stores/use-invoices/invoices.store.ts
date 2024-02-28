@@ -1,6 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 import { Invoice } from '../../1-models/invoice/invoice.schema';
 
+/** TEST NOTE
+ * I like using a record for entities because they allow for more efficient manipulation of data
+ *
+ * I think this will not be much visible on this exercise,
+ * but in general I think it's a good practice
+ */
 type Data = Record<string, Invoice>;
 
 class InvoicesStore {
@@ -8,6 +14,12 @@ class InvoicesStore {
     makeAutoObservable(this);
   }
 
+  /** TEST NOTE
+   * Though "private" exists in typescript,
+   * it does not in some javascript implementations
+   *
+   * So I rather use this keyword together with the prefix convention
+   */
   private _data: Data = {};
   private _memo: Invoice[] | undefined;
 
