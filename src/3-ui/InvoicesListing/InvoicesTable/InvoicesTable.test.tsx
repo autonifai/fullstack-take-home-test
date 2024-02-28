@@ -32,7 +32,7 @@ describe('<InvoicesTable/>', () => {
   });
 
   describe('When there are some invoices to review', () => {
-    it.concurrent.each([
+    it.each([
       [/invoice number/i],
       [/Vendor Name/i],
       [/Invoice Description/i],
