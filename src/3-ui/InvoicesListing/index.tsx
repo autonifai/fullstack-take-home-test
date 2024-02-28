@@ -1,11 +1,17 @@
-const invoices = [1, 2, 3, 4, 5];
+import { observer } from 'mobx-react-lite';
+import useInvoices from '../../2-stores/use-invoices';
+
 const number = 'test';
 const vendor_number = 'test';
 const description = 'test';
 const due_date = 'test';
 const amount = 'test';
 
-function InvoicesListing() {
+type Props = {
+  invoices: number[];
+};
+
+function InvoicesTable({ invoices }: Props) {
   return (
     <table data-testid="invoices-listing">
       <thead>
@@ -31,5 +37,11 @@ function InvoicesListing() {
     </table>
   );
 }
+
+const InvoicesListing = observer(() => {
+  const { invoices } = useInvoices();
+
+  return <InvoicesTable invoices={invoices} />;
+});
 
 export default InvoicesListing;
