@@ -2,6 +2,12 @@
 
 ## Development
 
+### Environment Variables
+
+Run `cp .env.example .env` this will create `.env` in the root of your local project.
+
+This new file should not be commited.
+
 ### Setup
 
 We're using [asdf](https://asdf-vm.com/) to develop this app. Assuming you've installed it, run the following.

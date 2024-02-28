@@ -7,12 +7,13 @@ const schema = z.object({
   vendor: z.string(),
   description: z.string(),
   //TODO: date representation
-  due_date: z.date(),
+  due_date: z.string().transform((x) => new Date(x)),
   //TODO: number representation, with currency
   total_amount: z.number(),
   currency: z.string(),
 });
 
 export type Invoice = z.output<typeof schema>;
+export type InvoiceDTO = z.input<typeof schema>;
 
 export default schema;
