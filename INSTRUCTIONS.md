@@ -2,6 +2,12 @@
 
 ## Development
 
+### Environment Variables
+
+Run `cp .env.example .env` this will create `.env` in the root of your local project.
+
+This new file should not be commited.
+
 ### Setup
 
 We're using [asdf](https://asdf-vm.com/) to develop this app. Assuming you've installed it, run the following.
@@ -59,3 +65,25 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Architecture
+
+The intention here is to create an architecture inspired by (clean architecutre)[https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html]. For this, a folder will be roughfly equivalent to a layer.
+
+Most folders will be numbered, and this numbers indicates how the files within that folder use[1] files on other folders.
+
+Usage can only happen between same-number folders (N), or on a folder that has a number immediatly lower (N - 1). This way we mimick the dependency rule.
+
+Cross-cutting concern files will be put in a zero-nuber folder (N = 0), and can be used by any other numbered folder.
+
+## Type integrity is prefered over the dependency rule
+
+An important exception for this rule is refering to the models. Our models are on the lowest non-zero folder but to keep type integrity they might be refed on other folders.
+
+## React is the dictating framework
+
+This app is tied to react. This is obvious on the ui layer, but keep in mind that other layers might take advantage of this too.
+
+In in this case, the stores are also related to react but conceptually they are not UI-related, so they are in difffernt folders
+
+[1]: Using `index.{ts,tsx}` files within a folder indicate that that file is the public API, which, in most cases, should be the only file accessed in the folder. And because it's an index file, we can import just the folder it stands for.
