@@ -20,7 +20,7 @@ type Props = {
  */
 function Content({ invoices }: Props) {
   if (!invoices.length) {
-    return <>There's no invoices to review</>;
+    return <>There are no invoices to review</>;
   }
 
   return (

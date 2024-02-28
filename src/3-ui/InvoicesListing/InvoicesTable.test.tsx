@@ -24,7 +24,7 @@ describe('<InvoicesTable/>', () => {
       store.setData([]);
 
       render(<Wrap store={store} />);
-      const linkElement = screen.getByText(/there's no invoices to review/i);
+      const linkElement = screen.getByText(/there are no invoices to review/i);
       expect(linkElement).toBeInTheDocument();
     });
   });
