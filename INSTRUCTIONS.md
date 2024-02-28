@@ -59,3 +59,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Architecture
+
+The intention here is to create an architecture inspired by clean architecutre. For this, a folder will be roughfly equivalent to a layer.
+
+Most folders will be numbered, and this numbers indicates how the files within that folder use[1] files on other folders.
+
+Usage can only happen between same-number folders (N), or on a folder that has a number immediatly lower (N - 1). This way we mimick the dependency rule.
+
+Cross-cutting concern files will be put in a zero-nuber folder (N = 0), and can be used by any other numbered folder.
+
+[1]: Using `index.{ts,tsx}` files within a folder indicate that that file is the public API, which, in most cases, should be the only file accessed in the folder. And because it's an index file, we can import just the folder it stands for.
