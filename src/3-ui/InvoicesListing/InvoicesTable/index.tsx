@@ -20,6 +20,11 @@ function Information({ invoice }: InformationProps) {
       <td>{invoice.description}</td>
       <td>{invoice.due_date.toLocaleString()}</td>
       <td className={styles.number}>{invoice.total_amount}</td>
+      <td>
+        <button className={styles['review-btn']} disabled>
+          Review
+        </button>
+      </td>
     </tr>
   );
 }
@@ -38,6 +43,7 @@ function Content({ invoices }: Props) {
           <th>Invoice Description</th>
           <th>Due Date</th>
           <th>Amount</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
