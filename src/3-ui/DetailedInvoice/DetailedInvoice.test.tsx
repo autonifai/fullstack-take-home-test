@@ -3,21 +3,26 @@ import CUD from '.';
 import { InvoicesProvider } from '../../2-stores/use-invoices';
 import InvoicesStore from '../../2-stores/use-invoices/invoices.store';
 import InvoiceFactory from '../../1-models/invoice/invoice.factory';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Props = {
   store: InvoicesStore;
 };
 
 function Wrap({ store }: Props) {
+  const queryClient = new QueryClient();
+
   return (
-    <InvoicesProvider store={store}>
-      <CUD />
-    </InvoicesProvider>
+    <QueryClientProvider client={queryClient}>
+      <InvoicesProvider store={store}>
+        <CUD />
+      </InvoicesProvider>
+    </QueryClientProvider>
   );
 }
 
 function createStore(size: number) {
-  const invoices = InvoiceFactory.random(size);
+  const invoices = InvoiceFactory.buildList(size);
   const store = new InvoicesStore();
 
   store.setData(invoices);
@@ -39,23 +44,23 @@ describe('<DetailedInvoice/>', () => {
   describe('When an invoice is selected', () => {
     it('renders the invoice', () => {
       const store = createStore(1);
-      const [selected] = store.invoices;
+      const [invoice] = store.invoices;
 
       render(<Wrap store={store} />);
 
       act(() => {
-        store.select(selected.id);
+        store.select(invoice.id);
       });
 
-      const result = screen.getByTestId(`detailed-invoice-${selected.id}`);
+      const result = screen.getByTestId(`detailed-invoice-${invoice.id}`);
 
       const vendor = within(result).getByTestId('vendor-details');
-      const invoice = within(result).getByTestId('invoice-details');
+      const invoiceDetails = within(result).getByTestId('invoice-details');
       const approve = within(result).getByTestId('approve');
       const reject = within(result).getByTestId('reject');
 
       expect(vendor).toBeDefined();
-      expect(invoice).toBeDefined();
+      expect(invoiceDetails).toBeDefined();
       expect(approve).toBeDefined();
       expect(reject).toBeDefined();
     });
@@ -63,12 +68,12 @@ describe('<DetailedInvoice/>', () => {
     it('allows "unselecting" the invoice', () => {
       const store = createStore(1);
 
-      const [selected] = InvoiceFactory.random(1);
+      const invoice = InvoiceFactory.buildSingle();
 
       const { container } = render(<Wrap store={store} />);
 
       act(() => {
-        store.select(selected.id);
+        store.select(invoice.id);
         store.select();
       });
 

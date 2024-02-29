@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import useInvoices from '../../2-stores/use-invoices';
 import VendorDetails from './VendorDetails';
@@ -7,7 +7,9 @@ import InvoiceDetails from './InvoiceDetails';
 
 import styles from './DetailedInvoice.module.scss';
 import Modal from '../Modal';
-import { Invoice, getStatus } from '../../1-models/invoice/invoice.schema';
+import Invoice from '../../1-models/invoice';
+import useApproveInvoice from '../../2-capabilities/use-approve-invoice';
+import useRejectInvoice from '../../2-capabilities/use-reject-invoice';
 
 type Props = {
   invoice: Invoice;
@@ -18,7 +20,7 @@ function Title({ invoice }: Props) {
     <div className={styles['title']}>
       <h1>{invoice.number}</h1>
       <span className={styles['badge']} data-type={invoice.status}>
-        {getStatus(invoice.status)}
+        {invoice.statusName}
       </span>
     </div>
   );
@@ -26,10 +28,25 @@ function Title({ invoice }: Props) {
 
 const DetailedInvoice = observer(() => {
   const { selected: invoice, select } = useInvoices();
+  const { approve, loading: approving } = useApproveInvoice();
+  const { reject, loading: rejecting } = useRejectInvoice();
+  const [isWaiting, setWaiting] = useState(false);
+
+  useEffect(() => {
+    setWaiting(approving || rejecting);
+  }, [approving, rejecting]);
 
   const handleClose = useCallback(() => {
     select();
   }, [select]);
+
+  const handleApprove = useCallback(() => {
+    approve({ invoice: invoice! });
+  }, [approve, invoice]);
+
+  const handleReject = useCallback(() => {
+    reject({ invoice: invoice! });
+  }, [reject, invoice]);
 
   if (!invoice) {
     return null;
@@ -44,10 +61,18 @@ const DetailedInvoice = observer(() => {
         <VendorDetails invoice={invoice} />
         <InvoiceDetails invoice={invoice} />
         <div className={styles['button-group']}>
-          <button disabled data-testid="approve">
+          <button
+            disabled={isWaiting}
+            data-testid="approve"
+            onClick={handleApprove}
+          >
             Validate
           </button>
-          <button disabled data-testid="reject">
+          <button
+            disabled={isWaiting}
+            data-testid="reject"
+            onClick={handleReject}
+          >
             Reject
           </button>
         </div>

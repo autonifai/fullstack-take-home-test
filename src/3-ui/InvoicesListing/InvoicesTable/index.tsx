@@ -2,10 +2,10 @@ import { useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import useInvoices from '../../../2-stores/use-invoices';
-import { Invoice } from '../../../1-models/invoice/invoice.schema';
 
 import styles from './InvoicesTable.module.scss';
 import useFormatting from '../../useFormatting';
+import Invoice from '../../../1-models/invoice';
 
 type Props = {
   invoices: Invoice[];

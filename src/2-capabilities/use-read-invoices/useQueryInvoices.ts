@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { Invoice } from '../../1-models/invoice/invoice.schema';
 import InvoicesGateway from '../../2-gateways/invoices.gateway';
+import Invoice from '../../1-models/invoice';
 
 function useQueryInvoices() {
   const {

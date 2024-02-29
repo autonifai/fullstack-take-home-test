@@ -18,7 +18,7 @@ function Wrap({ store }: Props) {
 }
 
 function createStore(size: number) {
-  const invoices = InvoiceFactory.random(size);
+  const invoices = InvoiceFactory.buildList(size);
   const store = new InvoicesStore();
 
   store.setData(invoices);

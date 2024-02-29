@@ -6,7 +6,7 @@ describe('InvoicesStore', () => {
     it('sets input as data', () => {
       const store = new CUD();
 
-      const invoices = InvoiceFactory.random(5);
+      const invoices = InvoiceFactory.buildList(5);
 
       store.setData(invoices);
 
@@ -23,21 +23,21 @@ describe('InvoicesStore', () => {
 
     describe('changes to a valid selected', () => {
       const store = new CUD();
-      const invoices = InvoiceFactory.random(5);
-      const selection = invoices[3];
+      const invoice = InvoiceFactory.buildSingle();
 
       beforeAll(() => {
-        store.setData(invoices);
-        store.select(selection.id);
+        store.setData([invoice]);
+        store.select(invoice.id);
       });
 
       it('returns the selected invoice', () => {
-        expect(store.selected).toStrictEqual(selection);
+        expect(store.selected).toStrictEqual(invoice);
       });
 
       it('protects changes to the selection', () => {
         const expectation = store.selected!.description;
 
+        //@ts-ignore
         store.selected!.description = 'selected cannot change';
 
         expect(store.selected?.description).toStrictEqual(expectation);
@@ -46,11 +46,10 @@ describe('InvoicesStore', () => {
 
     it('unselects', () => {
       const store = new CUD();
-      const invoices = InvoiceFactory.random(1);
-      const [selection] = invoices;
+      const invoice = InvoiceFactory.buildSingle();
 
-      store.setData(invoices);
-      store.select(selection.id);
+      store.setData([invoice]);
+      store.select(invoice.id);
       store.select();
 
       expect(store.selected).toBeUndefined();
@@ -59,12 +58,10 @@ describe('InvoicesStore', () => {
     it('changes to an invalid selected', () => {
       const store = new CUD();
 
-      const invoices = InvoiceFactory.random(1);
+      const invoice = InvoiceFactory.buildSingle();
 
-      const expectation = invoices[0];
-
-      store.setData(invoices);
-      store.select(expectation.id + 1);
+      store.setData([invoice]);
+      store.select(invoice.id + 1);
 
       expect(store.selected).toBeUndefined();
     });

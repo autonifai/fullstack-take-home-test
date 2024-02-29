@@ -1,16 +1,5 @@
 import { z } from 'zod';
 
-export const statuses = ['TO_BE_VALIDATED', 'REJECTED', 'APPROVED'] as const;
-
-type Statuses = (typeof statuses)[number];
-
-const STATUSES: Record<Statuses | 'UNKNOWN', string> = {
-  TO_BE_VALIDATED: 'Validation',
-  REJECTED: 'Rejected',
-  APPROVED: 'Approved',
-  UNKNOWN: 'Unknown',
-} as const;
-
 const schema = z.object({
   id: z.number(),
   //TODO: group vendors
@@ -36,11 +25,7 @@ const schema = z.object({
   status: z.string(),
 });
 
-export type Invoice = z.output<typeof schema>;
+export type InvoiceOutput = z.output<typeof schema>;
 export type InvoiceDTO = z.input<typeof schema>;
-
-export function getStatus(status: string): string {
-  return STATUSES[status as Statuses] ?? STATUSES.UNKNOWN;
-}
 
 export default schema;

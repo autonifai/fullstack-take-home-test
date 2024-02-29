@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { Invoice } from '../../1-models/invoice/invoice.schema';
+import Invoice from '../../1-models/invoice';
 
 /** TEST NOTE
  * I like using a record for entities because they allow for more efficient manipulation of data
@@ -43,7 +43,7 @@ class InvoicesStore {
       return undefined;
     }
 
-    return { ...selected };
+    return selected.clone();
   }
 
   setData = (invoices: Invoice[]) => {
@@ -55,6 +55,24 @@ class InvoicesStore {
   select = (invoidId?: number) => {
     this._selected = invoidId;
   };
+
+  private changeStatus = (status: string) => {
+    return (invoice: Invoice) => {
+      const finding = this._data[invoice?.id];
+
+      if (!finding) {
+        return;
+      }
+
+      this._data[finding.id] = finding.clone({
+        status,
+      });
+      this._memo = undefined;
+    };
+  };
+
+  approve = this.changeStatus('APPROVED');
+  reject = this.changeStatus('REJECTED');
 }
 
 function normalize(data: Data, invoice: Invoice): Data {
