@@ -4,6 +4,8 @@ import useInvoices from '../../2-stores/use-invoices';
 import VendorDetails from './VendorDetails';
 import InvoiceDetails from './InvoiceDetails';
 
+import styles from './DetailedInvoice.module.scss';
+
 const DetailedInvoice = observer(() => {
   const { selected: invoice } = useInvoices();
 
@@ -12,8 +14,14 @@ const DetailedInvoice = observer(() => {
   }
 
   return (
-    <div data-testid={`detailed-invoice-${invoice.id}`}>
-      <header>{invoice.number}</header>
+    <div
+      id={styles['detailed-invoice']}
+      data-testid={`detailed-invoice-${invoice.id}`}
+    >
+      <header>
+        <h1>{invoice.number}</h1>
+        <span>{invoice.status}</span>
+      </header>
       <VendorDetails invoice={invoice} />
       <InvoiceDetails invoice={invoice} />
     </div>

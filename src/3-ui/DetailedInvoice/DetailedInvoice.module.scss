@@ -1,0 +1,36 @@
+#detailed-invoice {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    * + * {
+      margin-left: 16px;
+    }
+  }
+
+  section > div {
+    display: grid;
+    gap: 8px 16px;
+  }
+}
+
+#vendor-details {
+  & > div {
+    grid-template:
+      'name name tax tax bank bank'
+      'address address address billing billing billing';
+  }
+}
+
+#invoice-details {
+  & > div {
+    grid-template:
+      'number number number po_number po_number po_number'
+      'date_of_issue date_of_issue payment_terms payment_terms due_date due_date'
+      'description description description line_item_details line_item_details line_item_details'
+      'pre_tax_amount pre_tax_amount discount discount tax_amount tax_amount'
+      'total_amount total_amount total_amount currency currency currency'
+      'gl_code gl_code gl_code cost_centre cost_centre cost_centre';
+  }
+}
