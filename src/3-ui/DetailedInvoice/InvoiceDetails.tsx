@@ -1,5 +1,6 @@
 import { Invoice } from '../../1-models/invoice/invoice.schema';
 import Input from '../Input';
+import useFormatting from '../useFormatting';
 
 import styles from './DetailedInvoice.module.scss';
 
@@ -8,6 +9,8 @@ type Props = {
 };
 
 function InvoiceDetails({ invoice }: Props) {
+  const { getDate, getNumber } = useFormatting();
+
   return (
     <section id={styles['invoice-details']} data-testid="invoice-details">
       <header>
@@ -29,7 +32,7 @@ function InvoiceDetails({ invoice }: Props) {
         <Input
           label="Date of Issue"
           disabled
-          value={invoice.date_of_issue.toDateString()}
+          value={getDate(invoice.date_of_issue)}
           style={{ gridArea: 'date_of_issue' }}
         />
         <Input
@@ -41,7 +44,7 @@ function InvoiceDetails({ invoice }: Props) {
         <Input
           label="Due Date"
           disabled
-          value={invoice.due_date.toDateString()}
+          value={getDate(invoice.due_date)}
           style={{ gridArea: 'due_date' }}
         />
         <Input
@@ -59,25 +62,25 @@ function InvoiceDetails({ invoice }: Props) {
         <Input
           label="Pre-Tax Amount"
           disabled
-          value={invoice.pre_tax_amount}
+          value={getNumber(invoice.pre_tax_amount)}
           style={{ gridArea: 'pre_tax_amount' }}
         />
         <Input
           label="Discount"
           disabled
-          value={invoice.discount}
+          value={getNumber(invoice.discount)}
           style={{ gridArea: 'discount' }}
         />
         <Input
           label="Tax Amount"
           disabled
-          value={invoice.tax_amount}
+          value={getNumber(invoice.tax_amount)}
           style={{ gridArea: 'tax_amount' }}
         />
         <Input
           label="Total Amount"
           disabled
-          value={invoice.total_amount}
+          value={getNumber(invoice.total_amount)}
           style={{ gridArea: 'total_amount' }}
         />
         <Input

@@ -5,6 +5,7 @@ import useInvoices from '../../../2-stores/use-invoices';
 import { Invoice } from '../../../1-models/invoice/invoice.schema';
 
 import styles from './InvoicesTable.module.scss';
+import useFormatting from '../../useFormatting';
 
 type Props = {
   invoices: Invoice[];
@@ -16,6 +17,7 @@ type InformationProps = {
 
 function Information({ invoice }: InformationProps) {
   const { select } = useInvoices();
+  const { getDate, getMoney } = useFormatting();
 
   const handleOpen = useCallback(() => {
     select(invoice.id);
@@ -26,8 +28,10 @@ function Information({ invoice }: InformationProps) {
       <td>{invoice.number}</td>
       <td>{invoice.vendor}</td>
       <td>{invoice.description}</td>
-      <td>{invoice.due_date.toLocaleString()}</td>
-      <td className={styles.number}>{invoice.total_amount}</td>
+      <td>{getDate(invoice.due_date)}</td>
+      <td className={styles.number}>
+        {getMoney(invoice.total_amount, invoice.currency)}
+      </td>
       <td>
         <button
           className={styles['review-btn']}
