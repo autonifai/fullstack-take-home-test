@@ -33,10 +33,44 @@ const factory = Factory.define<Invoice>('Invoice', Invoice)
     (pre, tax) => pre + tax,
   );
 
-const possibilities = {
-  random(size: number) {
-    return factory.buildList(size);
-  },
-};
+class InvoiceFactory {
+  private static _data: Record<string, any> = {};
 
-export default possibilities;
+  static buildSingle() {
+    const result = factory.build(this._data);
+
+    this._data = {};
+
+    return result;
+  }
+
+  static buildList(size: number) {
+    const result = factory.buildList(size, this._data);
+
+    this._data = {};
+
+    return result;
+  }
+
+  static withPendingApproval() {
+    this._data.status = 'TO_BE_VALIDATED';
+    return this;
+  }
+
+  static withApproval() {
+    this._data.status = 'APPROVED';
+    return this;
+  }
+
+  static withRejection() {
+    this._data.status = 'REJECTED';
+    return this;
+  }
+
+  static withUnknownStatus() {
+    this._data.status = faker.word.words(5);
+    return this;
+  }
+}
+
+export default InvoiceFactory;
