@@ -50,8 +50,8 @@ class Invoice implements InvoiceOutput {
     return STATUSES[this.status as Statuses] ?? STATUSES.UNKNOWN;
   }
 
-  clone(): Invoice {
-    return new Invoice(this);
+  clone(delta: Partial<InvoiceOutput> = {}): Invoice {
+    return new Invoice({ ...this, ...delta });
   }
 }
 

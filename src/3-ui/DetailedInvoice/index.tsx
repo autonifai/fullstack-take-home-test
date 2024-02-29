@@ -25,11 +25,19 @@ function Title({ invoice }: Props) {
 }
 
 const DetailedInvoice = observer(() => {
-  const { selected: invoice, select } = useInvoices();
+  const { selected: invoice, select, approve, reject } = useInvoices();
 
   const handleClose = useCallback(() => {
     select();
   }, [select]);
+
+  const handleApprove = useCallback(() => {
+    approve(invoice!);
+  }, [approve, invoice]);
+
+  const handleReject = useCallback(() => {
+    reject(invoice!);
+  }, [reject, invoice]);
 
   if (!invoice) {
     return null;
@@ -44,10 +52,10 @@ const DetailedInvoice = observer(() => {
         <VendorDetails invoice={invoice} />
         <InvoiceDetails invoice={invoice} />
         <div className={styles['button-group']}>
-          <button disabled data-testid="approve">
+          <button data-testid="approve" onClick={handleApprove}>
             Validate
           </button>
-          <button disabled data-testid="reject">
+          <button data-testid="reject" onClick={handleReject}>
             Reject
           </button>
         </div>

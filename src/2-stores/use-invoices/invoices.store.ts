@@ -55,6 +55,24 @@ class InvoicesStore {
   select = (invoidId?: number) => {
     this._selected = invoidId;
   };
+
+  private changeStatus = (status: string) => {
+    return (invoice: Invoice) => {
+      const finding = this._data[invoice?.id];
+
+      if (!finding) {
+        return;
+      }
+
+      this._data[finding.id] = finding.clone({
+        status,
+      });
+      this._memo = undefined;
+    };
+  };
+
+  approve = this.changeStatus('APPROVED');
+  reject = this.changeStatus('REJECTED');
 }
 
 function normalize(data: Data, invoice: Invoice): Data {
