@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite';
 
 import useInvoices from '../../2-stores/use-invoices';
+import VendorDetails from './VendorDetails';
+import InvoiceDetails from './InvoiceDetails';
 
 const DetailedInvoice = observer(() => {
   const { selected: invoice } = useInvoices();
@@ -10,7 +12,11 @@ const DetailedInvoice = observer(() => {
   }
 
   return (
-    <div data-testid={`detailed-invoice-${invoice.id}`}>{invoice.number}</div>
+    <div data-testid={`detailed-invoice-${invoice.id}`}>
+      <header>{invoice.number}</header>
+      <VendorDetails invoice={invoice} />
+      <InvoiceDetails invoice={invoice} />
+    </div>
   );
 });
 

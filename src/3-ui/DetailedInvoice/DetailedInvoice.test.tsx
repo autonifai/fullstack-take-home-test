@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import CUD from '.';
 import { InvoicesProvider } from '../../2-stores/use-invoices';
 import InvoicesStore from '../../2-stores/use-invoices/invoices.store';
@@ -37,13 +37,17 @@ describe('<DetailedInvoice/>', () => {
 
   describe('When an invoice is selected', () => {
     it('renders the invoice', () => {
-      const [invoice] = InvoiceFactory.random(1);
+      const [selected] = InvoiceFactory.random(1);
 
-      render(<Wrap invoice={invoice} />);
+      render(<Wrap invoice={selected} />);
 
-      const result = screen.getByTestId(`detailed-invoice-${invoice.id}`);
+      const result = screen.getByTestId(`detailed-invoice-${selected.id}`);
 
-      expect(result).toBeDefined();
+      const vendor = within(result).getByTestId('vendor-details');
+      const invoice = within(result).getByTestId('invoice-details');
+
+      expect(vendor).toBeDefined();
+      expect(invoice).toBeDefined();
     });
   });
 });
