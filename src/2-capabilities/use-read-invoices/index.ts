@@ -14,7 +14,6 @@ function useReadInvoices() {
     setData(data?.invoices ?? []);
   }, [data, setData]);
 
-  //TODO: wrap in generalization
   return {
     status: (loading
       ? 'pending'
