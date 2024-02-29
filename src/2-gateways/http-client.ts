@@ -26,6 +26,15 @@ const instance = {
     const data = (await response.json()) as T;
     return { data };
   },
+  async delete<T>(url: string): Promise<{
+    data: T;
+  }> {
+    const response = await fetch(`${backend}/${url}`, {
+      method: 'DELETE',
+    });
+    const data = (await response.json()) as T;
+    return { data };
+  },
 };
 
 export default instance;

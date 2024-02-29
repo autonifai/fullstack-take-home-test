@@ -9,6 +9,7 @@ import styles from './DetailedInvoice.module.scss';
 import Modal from '../Modal';
 import Invoice from '../../1-models/invoice';
 import useApproveInvoice from '../../2-capabilities/use-approve-invoice';
+import useRejectInvoice from '../../2-capabilities/use-reject-invoice';
 
 type Props = {
   invoice: Invoice;
@@ -26,13 +27,14 @@ function Title({ invoice }: Props) {
 }
 
 const DetailedInvoice = observer(() => {
-  const { selected: invoice, select, reject } = useInvoices();
-  const { approve, loading } = useApproveInvoice();
+  const { selected: invoice, select } = useInvoices();
+  const { approve, loading: approving } = useApproveInvoice();
+  const { reject, loading: rejecting } = useRejectInvoice();
   const [isWaiting, setWaiting] = useState(false);
 
   useEffect(() => {
-    setWaiting(loading);
-  }, [loading]);
+    setWaiting(approving || rejecting);
+  }, [approving, rejecting]);
 
   const handleClose = useCallback(() => {
     select();
@@ -43,7 +45,7 @@ const DetailedInvoice = observer(() => {
   }, [approve, invoice]);
 
   const handleReject = useCallback(() => {
-    reject(invoice!);
+    reject({ invoice: invoice! });
   }, [reject, invoice]);
 
   if (!invoice) {

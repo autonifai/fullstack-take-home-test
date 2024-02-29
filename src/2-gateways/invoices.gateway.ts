@@ -16,6 +16,11 @@ const endpoints = {
 
     return data;
   },
+  async rejectInvoice(id: number) {
+    const { data } = await instance.delete<null>(`invoices/${id}/approval`);
+
+    return data;
+  },
 };
 
 export default endpoints;
