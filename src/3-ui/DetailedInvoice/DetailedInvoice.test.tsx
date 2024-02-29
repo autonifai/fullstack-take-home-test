@@ -51,9 +51,13 @@ describe('<DetailedInvoice/>', () => {
 
       const vendor = within(result).getByTestId('vendor-details');
       const invoice = within(result).getByTestId('invoice-details');
+      const approve = within(result).getByTestId('approve');
+      const reject = within(result).getByTestId('reject');
 
       expect(vendor).toBeDefined();
       expect(invoice).toBeDefined();
+      expect(approve).toBeDefined();
+      expect(reject).toBeDefined();
     });
 
     it('allows "unselecting" the invoice', () => {

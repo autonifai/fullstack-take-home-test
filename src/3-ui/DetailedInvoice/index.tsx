@@ -41,6 +41,14 @@ const DetailedInvoice = observer(() => {
       >
         <VendorDetails invoice={invoice} />
         <InvoiceDetails invoice={invoice} />
+        <div className={styles['button-group']}>
+          <button disabled data-testid="approve">
+            Validate
+          </button>
+          <button disabled data-testid="reject">
+            Reject
+          </button>
+        </div>
       </div>
     </Modal>
   );

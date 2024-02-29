@@ -9,6 +9,11 @@
       gap: 8px 16px;
     }
   }
+
+  .button-group {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 .title {
