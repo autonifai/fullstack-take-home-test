@@ -10,6 +10,7 @@ function useReadInvoices() {
   const { loading, error, data } = useQueryInvoices();
   const { setData } = useInvoices();
 
+  //TODO: handle error
   useEffect(() => {
     setData(data?.invoices ?? []);
   }, [data, setData]);
