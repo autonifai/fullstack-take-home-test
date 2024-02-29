@@ -24,6 +24,26 @@
   * + * {
     margin-left: 16px;
   }
+
+  .badge {
+    background-color: yellow;
+    padding: 8px 16px;
+    border-radius: 24px;
+
+    &[data-type='TO_BE_VALIDATED'] {
+      background-color: blue;
+      color: white;
+    }
+
+    &[data-type='REJECTED'] {
+      background-color: red;
+    }
+
+    &[data-type='APPROVED'] {
+      background-color: green;
+      color: white;
+    }
+  }
 }
 
 #vendor-details {

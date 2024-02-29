@@ -7,7 +7,7 @@ import InvoiceDetails from './InvoiceDetails';
 
 import styles from './DetailedInvoice.module.scss';
 import Modal from '../Modal';
-import { Invoice } from '../../1-models/invoice/invoice.schema';
+import { Invoice, getStatus } from '../../1-models/invoice/invoice.schema';
 
 type Props = {
   invoice: Invoice;
@@ -17,7 +17,9 @@ function Title({ invoice }: Props) {
   return (
     <div className={styles['title']}>
       <h1>{invoice.number}</h1>
-      <span>{invoice.status}</span>
+      <span className={styles['badge']} data-type={invoice.status}>
+        {getStatus(invoice.status)}
+      </span>
     </div>
   );
 }

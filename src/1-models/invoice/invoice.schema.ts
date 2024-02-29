@@ -1,5 +1,12 @@
 import { z } from 'zod';
 
+const Statuses: Record<string, string> = {
+  TO_BE_VALIDATED: 'Validation',
+  REJECTED: 'Rejected',
+  APPROVED: 'Approved',
+  UNKNOWN: 'Unknown',
+} as const;
+
 const schema = z.object({
   id: z.number(),
   //TODO: group vendors
@@ -17,22 +24,22 @@ const schema = z.object({
   payment_terms: z.number(),
   description: z.string(),
   line_item_details: z.string(),
-  //TODO: factory as float
   pre_tax_amount: z.number(),
-  //TODO: factory as float
   discount: z.number(),
-  //TODO: factory as float
   tax_amount: z.number(),
-  total_amount: z.number(),
   //TODO: number representation, with currency
+  total_amount: z.number(),
   currency: z.string(),
   gl_code: z.string(),
   cost_centre: z.string(),
-  //TODO: enumify
   status: z.string(),
 });
 
 export type Invoice = z.output<typeof schema>;
 export type InvoiceDTO = z.input<typeof schema>;
+
+export function getStatus(status: string): string {
+  return Statuses[status] ?? Statuses.UNKNOWN;
+}
 
 export default schema;
