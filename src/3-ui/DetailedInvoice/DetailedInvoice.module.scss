@@ -1,17 +1,23 @@
 #detailed-invoice {
-  header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  section {
+    & + section {
+      padding: 16px;
+    }
 
-    * + * {
-      margin-left: 16px;
+    & > div {
+      display: grid;
+      gap: 8px 16px;
     }
   }
+}
 
-  section > div {
-    display: grid;
-    gap: 8px 16px;
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  * + * {
+    margin-left: 16px;
   }
 }
 

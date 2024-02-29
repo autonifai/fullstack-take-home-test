@@ -44,6 +44,18 @@ describe('InvoicesStore', () => {
       });
     });
 
+    it('unselects', () => {
+      const store = new CUD();
+      const invoices = InvoiceFactory.random(1);
+      const [selection] = invoices;
+
+      store.setData(invoices);
+      store.select(selection.id);
+      store.select();
+
+      expect(store.selected).toBeUndefined();
+    });
+
     it('changes to an invalid selected', () => {
       const store = new CUD();
 

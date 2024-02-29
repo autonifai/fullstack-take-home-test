@@ -1,23 +1,14 @@
-import React from 'react';
-import { render, screen, within } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import CUD from '.';
 import { InvoicesProvider } from '../../2-stores/use-invoices';
 import InvoicesStore from '../../2-stores/use-invoices/invoices.store';
 import InvoiceFactory from '../../1-models/invoice/invoice.factory';
-import { Invoice } from '../../1-models/invoice/invoice.schema';
 
 type Props = {
-  invoice?: Invoice;
+  store: InvoicesStore;
 };
 
-function Wrap({ invoice }: Props) {
-  const store = new InvoicesStore();
-
-  if (invoice) {
-    store.setData([invoice]);
-    store.select(invoice.id);
-  }
-
+function Wrap({ store }: Props) {
   return (
     <InvoicesProvider store={store}>
       <CUD />
@@ -25,11 +16,21 @@ function Wrap({ invoice }: Props) {
   );
 }
 
+function createStore(size: number) {
+  const invoices = InvoiceFactory.random(size);
+  const store = new InvoicesStore();
+
+  store.setData(invoices);
+
+  return store;
+}
+
 describe('<DetailedInvoice/>', () => {
   describe('When nothing is selected', () => {
     it('does not render', () => {
-      const { container } = render(<Wrap />);
-      render(<Wrap />);
+      const store = createStore(3);
+
+      const { container } = render(<Wrap store={store} />);
 
       expect(container).toBeEmptyDOMElement();
     });
@@ -37,9 +38,14 @@ describe('<DetailedInvoice/>', () => {
 
   describe('When an invoice is selected', () => {
     it('renders the invoice', () => {
-      const [selected] = InvoiceFactory.random(1);
+      const store = createStore(1);
+      const [selected] = store.invoices;
 
-      render(<Wrap invoice={selected} />);
+      render(<Wrap store={store} />);
+
+      act(() => {
+        store.select(selected.id);
+      });
 
       const result = screen.getByTestId(`detailed-invoice-${selected.id}`);
 
@@ -48,6 +54,21 @@ describe('<DetailedInvoice/>', () => {
 
       expect(vendor).toBeDefined();
       expect(invoice).toBeDefined();
+    });
+
+    it('allows "unselecting" the invoice', () => {
+      const store = createStore(1);
+
+      const [selected] = InvoiceFactory.random(1);
+
+      const { container } = render(<Wrap store={store} />);
+
+      act(() => {
+        store.select(selected.id);
+        store.select();
+      });
+
+      expect(container).toBeEmptyDOMElement();
     });
   });
 });

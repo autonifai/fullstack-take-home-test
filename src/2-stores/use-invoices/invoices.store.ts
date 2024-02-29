@@ -52,7 +52,7 @@ class InvoicesStore {
     this._data = invoices.reduce<Data>(normalize, {});
   };
 
-  select = (invoidId: number) => {
+  select = (invoidId?: number) => {
     this._selected = invoidId;
   };
 }
