@@ -22,6 +22,7 @@ class InvoicesStore {
    */
   private _data: Data = {};
   private _memo: Invoice[] | undefined;
+  private _selected: number | undefined;
 
   get invoices() {
     if (!this._memo) {
@@ -31,9 +32,28 @@ class InvoicesStore {
     return this._memo;
   }
 
+  get selected(): Invoice | undefined {
+    if (this._selected === undefined) {
+      return undefined;
+    }
+
+    const selected = this._data[this._selected];
+
+    if (!selected) {
+      return undefined;
+    }
+
+    return { ...selected };
+  }
+
   setData = (invoices: Invoice[]) => {
     this._memo = undefined;
+    this._selected = undefined;
     this._data = invoices.reduce<Data>(normalize, {});
+  };
+
+  select = (invoidId?: number) => {
+    this._selected = invoidId;
   };
 }
 

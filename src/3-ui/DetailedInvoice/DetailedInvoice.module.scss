@@ -1,0 +1,67 @@
+#detailed-invoice {
+  section {
+    & + section {
+      padding: 16px;
+    }
+
+    & > div {
+      display: grid;
+      gap: 8px 16px;
+    }
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  * + * {
+    margin-left: 16px;
+  }
+
+  .badge {
+    background-color: yellow;
+    padding: 8px 16px;
+    border-radius: 24px;
+
+    &[data-type='TO_BE_VALIDATED'] {
+      background-color: blue;
+      color: white;
+    }
+
+    &[data-type='REJECTED'] {
+      background-color: red;
+    }
+
+    &[data-type='APPROVED'] {
+      background-color: green;
+      color: white;
+    }
+  }
+}
+
+#vendor-details {
+  & > div {
+    grid-template:
+      'name name tax tax bank bank'
+      'address address address billing billing billing';
+  }
+}
+
+#invoice-details {
+  & > div {
+    grid-template:
+      'number number number po_number po_number po_number'
+      'date_of_issue date_of_issue payment_terms payment_terms due_date due_date'
+      'description description description line_item_details line_item_details line_item_details'
+      'pre_tax_amount pre_tax_amount discount discount tax_amount tax_amount'
+      'total_amount total_amount total_amount currency currency currency'
+      'gl_code gl_code gl_code cost_centre cost_centre cost_centre';
+  }
+}

@@ -12,7 +12,10 @@ export const InvoicesProvider: FC<Props> = ({
   children,
   store = useInvoices,
 }) => {
-  //TODO: this was a workaround for testing
+  /** TESTING NOTE
+   * This is a workaround for enabling testing,
+   * as I couldnt'mock
+   */
   const value = typeof store === 'function' ? store() : store;
 
   return (
