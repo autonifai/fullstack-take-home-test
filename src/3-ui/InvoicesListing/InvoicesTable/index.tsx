@@ -1,4 +1,6 @@
+import { useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
+
 import useInvoices from '../../../2-stores/use-invoices';
 import { Invoice } from '../../../1-models/invoice/invoice.schema';
 
@@ -13,15 +15,25 @@ type InformationProps = {
 };
 
 function Information({ invoice }: InformationProps) {
+  const { select } = useInvoices();
+
+  const handleOpen = useCallback(() => {
+    select(invoice.id);
+  }, [invoice.id, select]);
+
   return (
-    <tr data-testid={`invoice-${invoice.id}`}>
+    <tr data-testid={`invoice-row-${invoice.id}`}>
       <td>{invoice.number}</td>
       <td>{invoice.vendor}</td>
       <td>{invoice.description}</td>
       <td>{invoice.due_date.toLocaleString()}</td>
       <td className={styles.number}>{invoice.total_amount}</td>
       <td>
-        <button className={styles['review-btn']} disabled>
+        <button
+          className={styles['review-btn']}
+          data-testid="review-btn"
+          onClick={handleOpen}
+        >
           Review
         </button>
       </td>
