@@ -3,16 +3,21 @@ import CUD from '.';
 import { InvoicesProvider } from '../../2-stores/use-invoices';
 import InvoicesStore from '../../2-stores/use-invoices/invoices.store';
 import InvoiceFactory from '../../1-models/invoice/invoice.factory';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Props = {
   store: InvoicesStore;
 };
 
 function Wrap({ store }: Props) {
+  const queryClient = new QueryClient();
+
   return (
-    <InvoicesProvider store={store}>
-      <CUD />
-    </InvoicesProvider>
+    <QueryClientProvider client={queryClient}>
+      <InvoicesProvider store={store}>
+        <CUD />
+      </InvoicesProvider>
+    </QueryClientProvider>
   );
 }
 

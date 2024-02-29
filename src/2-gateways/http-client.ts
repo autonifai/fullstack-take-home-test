@@ -12,9 +12,18 @@ const instance = {
   async get<T>(url: string): Promise<{
     data: T;
   }> {
-    const response = await fetch(`${backend}/invoices`);
+    const response = await fetch(`${backend}/${url}`);
     const data = (await response.json()) as T;
 
+    return { data };
+  },
+  async post<T>(url: string): Promise<{
+    data: T;
+  }> {
+    const response = await fetch(`${backend}/${url}`, {
+      method: 'POST',
+    });
+    const data = (await response.json()) as T;
     return { data };
   },
 };

@@ -11,6 +11,11 @@ const endpoints = {
 
     return invoices;
   },
+  async approveInvoice(id: number) {
+    const { data } = await instance.post<null>(`invoices/${id}/approval`);
+
+    return data;
+  },
 };
 
 export default endpoints;

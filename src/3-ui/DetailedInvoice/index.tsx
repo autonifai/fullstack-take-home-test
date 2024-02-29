@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import useInvoices from '../../2-stores/use-invoices';
 import VendorDetails from './VendorDetails';
@@ -8,6 +8,7 @@ import InvoiceDetails from './InvoiceDetails';
 import styles from './DetailedInvoice.module.scss';
 import Modal from '../Modal';
 import Invoice from '../../1-models/invoice';
+import useApproveInvoice from '../../2-capabilities/use-approve-invoice';
 
 type Props = {
   invoice: Invoice;
@@ -25,14 +26,20 @@ function Title({ invoice }: Props) {
 }
 
 const DetailedInvoice = observer(() => {
-  const { selected: invoice, select, approve, reject } = useInvoices();
+  const { selected: invoice, select, reject } = useInvoices();
+  const { approve, loading } = useApproveInvoice();
+  const [isWaiting, setWaiting] = useState(false);
+
+  useEffect(() => {
+    setWaiting(loading);
+  }, [loading]);
 
   const handleClose = useCallback(() => {
     select();
   }, [select]);
 
   const handleApprove = useCallback(() => {
-    approve(invoice!);
+    approve({ invoice: invoice! });
   }, [approve, invoice]);
 
   const handleReject = useCallback(() => {
@@ -52,10 +59,18 @@ const DetailedInvoice = observer(() => {
         <VendorDetails invoice={invoice} />
         <InvoiceDetails invoice={invoice} />
         <div className={styles['button-group']}>
-          <button data-testid="approve" onClick={handleApprove}>
+          <button
+            disabled={isWaiting}
+            data-testid="approve"
+            onClick={handleApprove}
+          >
             Validate
           </button>
-          <button data-testid="reject" onClick={handleReject}>
+          <button
+            disabled={isWaiting}
+            data-testid="reject"
+            onClick={handleReject}
+          >
             Reject
           </button>
         </div>
