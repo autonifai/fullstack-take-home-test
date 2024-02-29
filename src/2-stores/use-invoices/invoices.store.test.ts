@@ -38,6 +38,7 @@ describe('InvoicesStore', () => {
       it('protects changes to the selection', () => {
         const expectation = store.selected!.description;
 
+        //@ts-ignore
         store.selected!.description = 'selected cannot change';
 
         expect(store.selected?.description).toStrictEqual(expectation);

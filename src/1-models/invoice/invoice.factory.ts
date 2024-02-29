@@ -1,8 +1,8 @@
 import { Factory } from 'rosie';
 import { faker } from '@faker-js/faker';
-import { Invoice, statuses } from './invoice.schema';
+import Invoice, { statuses } from '.';
 
-const factory = Factory.define<Invoice>('Invoice')
+const factory = Factory.define<Invoice>('Invoice', Invoice)
   .attrs({
     id: faker.number.int,
     vendor: faker.company.name,

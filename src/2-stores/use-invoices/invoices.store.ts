@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { Invoice } from '../../1-models/invoice/invoice.schema';
+import Invoice from '../../1-models/invoice';
 
 /** TEST NOTE
  * I like using a record for entities because they allow for more efficient manipulation of data
@@ -43,7 +43,7 @@ class InvoicesStore {
       return undefined;
     }
 
-    return { ...selected };
+    return selected.clone();
   }
 
   setData = (invoices: Invoice[]) => {

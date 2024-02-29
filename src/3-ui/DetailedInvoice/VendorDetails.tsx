@@ -1,4 +1,4 @@
-import { Invoice } from '../../1-models/invoice/invoice.schema';
+import Invoice from '../../1-models/invoice';
 import Input from '../Input';
 
 import styles from './DetailedInvoice.module.scss';
