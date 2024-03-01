@@ -29,10 +29,10 @@ function Information({ invoice }: InformationProps) {
       <td>{invoice.vendor}</td>
       <td>{invoice.description}</td>
       <td>{getDate(invoice.due_date)}</td>
-      <td className={styles.number}>
+      <td className={styles['cell-right']}>
         {getMoney(invoice.total_amount, invoice.currency)}
       </td>
-      <td>
+      <td className={styles['cell-right']}>
         <button
           className={styles['review-btn']}
           data-testid="review-btn"
@@ -47,7 +47,9 @@ function Information({ invoice }: InformationProps) {
 
 function Content({ invoices }: Props) {
   if (!invoices.length) {
-    return <>There are no invoices to review</>;
+    return (
+      <div className={styles.centered}>There are no invoices to review</div>
+    );
   }
 
   return (
