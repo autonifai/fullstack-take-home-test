@@ -8,33 +8,69 @@
 
 const backend = process.env.REACT_APP_APP_API_BASE_URL;
 
-const instance = {
-  async get<T>(url: string): Promise<{
-    data: T;
-  }> {
-    const response = await fetch(`${backend}/${url}`);
+type ResponseWrapper<T> = {
+  data?: T;
+  error?: Error;
+};
+
+type Treatment<T = any> = (
+  response: Response,
+  endpoint?: string,
+  type?: string,
+) => Promise<ResponseWrapper<T>>;
+
+const TREATMENTS: Record<string, Treatment> = {
+  'application/json': async <T>(response: Response) => {
     const data = (await response.json()) as T;
 
     return { data };
   },
-  async post<T>(url: string): Promise<{
-    data: T;
-  }> {
-    const response = await fetch(`${backend}/${url}`, {
-      method: 'POST',
+  'application/pdf': async (response: Response, endpoint?: string) => {
+    const blob = await response.blob();
+
+    const pdfFile = new File([blob], endpoint!, {
+      type: 'application/pdf',
     });
-    const data = (await response.json()) as T;
-    return { data };
+
+    return { data: pdfFile };
   },
-  async delete<T>(url: string): Promise<{
-    data: T;
-  }> {
-    const response = await fetch(`${backend}/${url}`, {
-      method: 'DELETE',
-    });
-    const data = (await response.json()) as T;
-    return { data };
+  unknown: async (_: Response, __?: string, type?: string) => {
+    const error = new Error(`Unsuppported content type: ${type}`);
+
+    return { error };
   },
+};
+
+type Parsings = keyof typeof TREATMENTS;
+
+const fetchFn =
+  (method: 'GET' | 'POST' | 'DELETE') =>
+  async <T>(url: string): Promise<ResponseWrapper<T>> => {
+    try {
+      const endpoint = `${backend}/${url}`;
+
+      const response = await fetch(endpoint, {
+        method,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch: ${response.statusText}`);
+      }
+
+      const type = response.headers.get('content-type') as Parsings;
+
+      const treatment: Treatment<T> = TREATMENTS[type] ?? TREATMENTS.unknown;
+
+      return treatment(response, endpoint, type);
+    } catch (error) {
+      return { error: error as Error };
+    }
+  };
+
+const instance = {
+  get: fetchFn('GET'),
+  post: fetchFn('POST'),
+  delete: fetchFn('DELETE'),
 };
 
 export default instance;

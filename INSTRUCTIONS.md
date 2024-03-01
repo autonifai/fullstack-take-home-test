@@ -17,7 +17,15 @@ $ asdf install #install the correct version of node
 $ npm install #install the FE's dependencies
 ```
 
-After this, you should be able to run the commands available further in this document.
+#### Troubleshoot
+
+Some packages, like sass and the PDF visualizer, might depend on libraries that use C or Python for some internal operation. In this case, installation for each of those libraris will fail telling you which package caused it.
+
+For each package, check thhe [NPM](https://www.npmjs.com/) instructions for installing and troubleshooting.
+
+#### Ready!
+
+If the installation works without problems, you should be able to run the commands available further in this document.
 
 ### Bootstrap
 

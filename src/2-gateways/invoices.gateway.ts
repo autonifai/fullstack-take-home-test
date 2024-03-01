@@ -4,10 +4,9 @@ import instance from './http-client';
 
 const endpoints = {
   async listInvoices() {
-    const { data } = await instance.get<InvoiceDTO[]>('invoices');
+    const { data = [] } = await instance.get<InvoiceDTO[]>('invoices');
 
-    //TODO: remove(?) invoices that don't parse
-    const invoices = data.map(Invoice.parse);
+    const invoices = data.reduce(removeUnrecognized, []);
 
     return invoices;
   },
@@ -21,6 +20,21 @@ const endpoints = {
 
     return data;
   },
+  async getInvoiceFile(id: number) {
+    const { data } = await instance.get<File>(`invoices/${id}/file`);
+
+    return data;
+  },
 };
+
+function removeUnrecognized(acc: Invoice[], dto: InvoiceDTO): Invoice[] {
+  try {
+    const parsed = Invoice.parse(dto);
+
+    return [...acc, parsed];
+  } catch (e) {
+    return acc;
+  }
+}
 
 export default endpoints;
