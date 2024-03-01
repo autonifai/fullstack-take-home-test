@@ -1,0 +1,12 @@
+.pdf-viewer {
+  overflow: auto;
+  background-color: #ddd;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--ready {
+    display: inherit;
+  }
+}

@@ -59,7 +59,7 @@ const DetailedInvoice = observer(() => {
         id={styles['detailed-invoice']}
         data-testid={`detailed-invoice-${invoice.id}`}
       >
-        <div className={styles['pdf-viewer']}>
+        <div className={styles['invoice-file']}>
           <PDFViewer />
         </div>
         <div className={styles['form']}>

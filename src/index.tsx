@@ -5,6 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+import { pdfjs } from 'react-pdf';
+
+//TODO: only need to do it when app initializes
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );

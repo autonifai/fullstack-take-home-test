@@ -1,12 +1,17 @@
 #detailed-invoice {
   display: flex;
+  height: 100%;
+  flex: 1;
 
-  .pdf-viewer {
-    flex: 1;
+  .invoice-file {
+    flex: auto;
+    width: 25%;
+    overflow: auto;
   }
 
   .form {
     flex: auto;
+    overflow: auto;
   }
 
   section {
