@@ -20,6 +20,13 @@ class Invoice implements InvoiceOutput {
   }
 
   static parse(data: InvoiceDTO) {
+    /** TESTING NOTE
+     * zod's type for safeParse is not showing what I get when executing the application, so at the moment, i'm resorting for the calling code to catch this
+     *
+     * safe parsing would allow us to hide invoices that are not in a format recognized by the FE, thus preventing errors due to different schema
+     *
+     * doing this is one way to "force" BE and FE to be synchonized on the data
+     */
     const parsed = schema.parse(data);
     return new Invoice(parsed);
   }
