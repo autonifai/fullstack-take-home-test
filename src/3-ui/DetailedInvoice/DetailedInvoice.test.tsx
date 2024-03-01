@@ -9,6 +9,7 @@ type Props = {
   store: InvoicesStore;
 };
 
+//TODO: mock PDFViewer
 function Wrap({ store }: Props) {
   const queryClient = new QueryClient();
 

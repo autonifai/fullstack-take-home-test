@@ -11,23 +11,34 @@
 
   .form {
     flex: auto;
-    overflow: auto;
-  }
 
-  section {
-    & + section {
-      padding: 16px;
-    }
+    .fieldset {
+      overflow: auto;
+      section {
+        & + section {
+          padding: 16px;
+        }
 
-    & > div {
-      display: grid;
-      gap: 8px 16px;
+        & > div {
+          display: grid;
+          gap: 8px 16px;
+        }
+      }
     }
   }
 
   .button-group {
     display: flex;
     justify-content: space-around;
+    padding: 24px 0 8px;
+
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #ddd;
   }
 }
 

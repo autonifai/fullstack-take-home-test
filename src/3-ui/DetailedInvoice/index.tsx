@@ -63,8 +63,10 @@ const DetailedInvoice = observer(() => {
           <PDFViewer />
         </div>
         <div className={styles['form']}>
-          <VendorDetails invoice={invoice} />
-          <InvoiceDetails invoice={invoice} />
+          <div className={styles['fieldset']}>
+            <VendorDetails invoice={invoice} />
+            <InvoiceDetails invoice={invoice} />
+          </div>
           <div className={styles['button-group']}>
             <button
               disabled={isWaiting}
