@@ -20,6 +20,11 @@ const endpoints = {
 
     return data;
   },
+  async getInvoiceFile(id: number) {
+    const { data } = await instance.get<File>(`invoices/${id}/file`);
+
+    return data;
+  },
 };
 
 function removeUnrecognized(acc: Invoice[], dto: InvoiceDTO): Invoice[] {

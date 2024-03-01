@@ -7,8 +7,8 @@ fetchMock.enableMocks();
 describe('HTTP Client', () => {
   describe.each([
     ['GET', CUD.get],
-    //  [CUD.delete],
-    //  [CUD.post]
+    ['DELETE', CUD.delete],
+    ['POST', CUD.post],
   ])('Test method %s', (name, method) => {
     beforeEach(() => {
       //@ts-ignore

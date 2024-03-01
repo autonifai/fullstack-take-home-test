@@ -19,10 +19,11 @@ const maxWidth = 800;
 
 type PDFFile = string | File | null;
 
-function PDFViewer() {
-  const [file] = useState<PDFFile>(
-    'https://refuses.github.io/preprints/antifragile.pdf',
-  );
+type Props = {
+  source?: PDFFile;
+};
+
+function PDFViewer({ source = null }: Props) {
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
   const [containerWidth, setContainerWidth] = useState<number>();
@@ -51,7 +52,7 @@ function PDFViewer() {
   return (
     <div className={wrapperClass} ref={setContainerRef}>
       <Document
-        file={file}
+        file={source}
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
       >

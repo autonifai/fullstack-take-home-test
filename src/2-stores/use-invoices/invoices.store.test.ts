@@ -66,4 +66,19 @@ describe('InvoicesStore', () => {
       expect(store.selected).toBeUndefined();
     });
   });
+  describe('#saveFile', () => {
+    it('sets file to the invoice', () => {
+      const store = new CUD();
+
+      const invoice = InvoiceFactory.buildSingle();
+
+      store.setData([invoice]);
+      store.select(invoice.id);
+      store.saveFile(invoice.id, new File([], 'test'));
+
+      store.select(invoice.id);
+
+      expect(store.selected?.file?.name).toEqual('test');
+    });
+  });
 });

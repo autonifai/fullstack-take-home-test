@@ -11,6 +11,7 @@ import Invoice from '../../1-models/invoice';
 import useApproveInvoice from '../../2-capabilities/use-approve-invoice';
 import useRejectInvoice from '../../2-capabilities/use-reject-invoice';
 import PDFViewer from '../PDFViewer';
+import useInvoiceFile from '../../2-capabilities/use-invoice-file';
 
 type Props = {
   invoice: Invoice;
@@ -33,6 +34,8 @@ const DetailedInvoice = observer(() => {
   const { reject, loading: rejecting } = useRejectInvoice();
   const [isWaiting, setWaiting] = useState(false);
 
+  const { execute: getInvoiceFile } = useInvoiceFile(invoice?.id);
+
   useEffect(() => {
     setWaiting(approving || rejecting);
   }, [approving, rejecting]);
@@ -49,6 +52,14 @@ const DetailedInvoice = observer(() => {
     reject({ invoice: invoice! });
   }, [reject, invoice]);
 
+  useEffect(() => {
+    if (!invoice || invoice.file) {
+      return;
+    }
+
+    getInvoiceFile(invoice.id);
+  }, [getInvoiceFile, invoice]);
+
   if (!invoice) {
     return null;
   }
@@ -60,7 +71,7 @@ const DetailedInvoice = observer(() => {
         data-testid={`detailed-invoice-${invoice.id}`}
       >
         <div className={styles['invoice-file']}>
-          <PDFViewer />
+          <PDFViewer source={invoice.file} />
         </div>
         <div className={styles['form']}>
           <div className={styles['fieldset']}>

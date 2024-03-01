@@ -52,12 +52,13 @@ class Invoice implements InvoiceOutput {
   readonly gl_code!: string;
   readonly cost_centre!: string;
   readonly status!: string;
+  readonly file!: File | undefined;
 
   get statusName(): string {
     return STATUSES[this.status as Statuses] ?? STATUSES.UNKNOWN;
   }
 
-  clone(delta: Partial<InvoiceOutput> = {}): Invoice {
+  clone(delta: Partial<Invoice> = {}): Invoice {
     return new Invoice({ ...this, ...delta });
   }
 }

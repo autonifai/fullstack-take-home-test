@@ -73,6 +73,19 @@ class InvoicesStore {
 
   approve = this.changeStatus('APPROVED');
   reject = this.changeStatus('REJECTED');
+
+  saveFile = (id: number, file: File) => {
+    const finding = this._data[id];
+
+    if (!finding) {
+      return;
+    }
+
+    this._data[finding.id] = finding.clone({
+      file,
+    });
+    this._memo = undefined;
+  };
 }
 
 function normalize(data: Data, invoice: Invoice): Data {
