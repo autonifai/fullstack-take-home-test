@@ -38,12 +38,13 @@ function PDFViewer() {
 
   useResizeObserver(containerRef, resizeObserverOptions, onResize);
 
-  function onDocumentLoadSuccess({
-    numPages: nextNumPages,
-  }: PDFDocumentProxy): void {
-    setNumPages(nextNumPages);
-    setReady(true);
-  }
+  const onDocumentLoadSuccess = useCallback(
+    ({ numPages: nextNumPages }: PDFDocumentProxy) => {
+      setNumPages(nextNumPages);
+      setReady(true);
+    },
+    [],
+  );
 
   const wrapperClass = `${styles['pdf-viewer']} ${isReady ? styles['pdf-viewer--ready'] : ''}`;
 
