@@ -10,6 +10,7 @@ import Modal from '../Modal';
 import Invoice from '../../1-models/invoice';
 import useApproveInvoice from '../../2-capabilities/use-approve-invoice';
 import useRejectInvoice from '../../2-capabilities/use-reject-invoice';
+import PDFViewer from '../PDFViewer';
 
 type Props = {
   invoice: Invoice;
@@ -58,23 +59,28 @@ const DetailedInvoice = observer(() => {
         id={styles['detailed-invoice']}
         data-testid={`detailed-invoice-${invoice.id}`}
       >
-        <VendorDetails invoice={invoice} />
-        <InvoiceDetails invoice={invoice} />
-        <div className={styles['button-group']}>
-          <button
-            disabled={isWaiting}
-            data-testid="approve"
-            onClick={handleApprove}
-          >
-            Validate
-          </button>
-          <button
-            disabled={isWaiting}
-            data-testid="reject"
-            onClick={handleReject}
-          >
-            Reject
-          </button>
+        <div className={styles['pdf-viewer']}>
+          <PDFViewer />
+        </div>
+        <div className={styles['form']}>
+          <VendorDetails invoice={invoice} />
+          <InvoiceDetails invoice={invoice} />
+          <div className={styles['button-group']}>
+            <button
+              disabled={isWaiting}
+              data-testid="approve"
+              onClick={handleApprove}
+            >
+              Validate
+            </button>
+            <button
+              disabled={isWaiting}
+              data-testid="reject"
+              onClick={handleReject}
+            >
+              Reject
+            </button>
+          </div>
         </div>
       </div>
     </Modal>

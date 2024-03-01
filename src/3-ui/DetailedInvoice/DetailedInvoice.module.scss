@@ -1,4 +1,14 @@
 #detailed-invoice {
+  display: flex;
+
+  .pdf-viewer {
+    flex: 1;
+  }
+
+  .form {
+    flex: auto;
+  }
+
   section {
     & + section {
       padding: 16px;
