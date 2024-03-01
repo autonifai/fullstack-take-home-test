@@ -7,7 +7,7 @@ const endpoints = {
     const { data } = await instance.get<InvoiceDTO[]>('invoices');
 
     //TODO: remove(?) invoices that don't parse
-    const invoices = data.map(Invoice.parse);
+    const invoices = data?.map(Invoice.parse) ?? [];
 
     return invoices;
   },
