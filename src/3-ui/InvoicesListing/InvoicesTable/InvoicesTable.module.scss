@@ -1,0 +1,44 @@
+.centered {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+
+  thead tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  tbody tr {
+    &:hover {
+      background-color: #ddd;
+    }
+
+    & + tr {
+      border-top: 1px solid #ddd;
+    }
+  }
+
+  th,
+  td {
+    padding: 12px 20px;
+  }
+
+  td {
+    text-align: left;
+
+    &.cell-right {
+      text-align: right;
+    }
+  }
+}
+
+.review-btn {
+  cursor: pointer;
+}

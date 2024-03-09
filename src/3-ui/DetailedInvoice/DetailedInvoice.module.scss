@@ -1,0 +1,93 @@
+#detailed-invoice {
+  display: flex;
+  height: 100%;
+  flex: 1;
+
+  .invoice-file {
+    flex: auto;
+    width: 25%;
+    overflow: auto;
+  }
+
+  .form {
+    flex: auto;
+
+    .fieldset {
+      overflow: auto;
+      section {
+        & + section {
+          padding: 16px;
+        }
+
+        & > div {
+          display: grid;
+          gap: 8px 16px;
+        }
+      }
+    }
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-around;
+    padding: 24px 0 8px;
+
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #ddd;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  * + * {
+    margin-left: 16px;
+  }
+
+  .badge {
+    background-color: yellow;
+    padding: 8px 16px;
+    border-radius: 24px;
+
+    &[data-type='TO_BE_VALIDATED'] {
+      background-color: blue;
+      color: white;
+    }
+
+    &[data-type='REJECTED'] {
+      background-color: red;
+    }
+
+    &[data-type='APPROVED'] {
+      background-color: green;
+      color: white;
+    }
+  }
+}
+
+#vendor-details {
+  & > div {
+    grid-template:
+      'name name tax tax bank bank'
+      'address address address billing billing billing';
+  }
+}
+
+#invoice-details {
+  & > div {
+    grid-template:
+      'number number number po_number po_number po_number'
+      'date_of_issue date_of_issue payment_terms payment_terms due_date due_date'
+      'description description description line_item_details line_item_details line_item_details'
+      'pre_tax_amount pre_tax_amount discount discount tax_amount tax_amount'
+      'total_amount total_amount total_amount currency currency currency'
+      'gl_code gl_code gl_code cost_centre cost_centre cost_centre';
+  }
+}
