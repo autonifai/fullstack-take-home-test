@@ -1,0 +1,76 @@
+// Box sizing rules
+*,
+*::before,
+*::after 
+  box-sizing: border-box
+
+
+// Remove default padding and margin
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd 
+  margin: 0
+  padding: 0
+
+
+// Set default font properties
+body 
+  font-family: Arial, sans-serif
+  font-size: 16px
+  line-height: 1.5
+  color: #333
+
+
+// Make images easier to work with
+img 
+  max-width: 100%
+  height: auto
+
+
+// Inherit fonts for inputs and buttons
+input,
+button,
+textarea,
+select 
+  font: inherit
+
+
+// Remove list styles on ul, ol elements with a class `list-reset`
+ul[class],
+ol[class] 
+  list-style: none
+
+
+// A very basic normalization for links
+a 
+  text-decoration: none
+  color: inherit
+
+
+// Improve accessibility of visually hidden content
+.visually-hidden 
+  position: absolute
+  width: 1px
+  height: 1px
+  margin: -1px
+  border: 0
+  padding: 0
+  white-space: nowrap
+  clip-path: inset(50%)
+  clip: rect(0 0 0 0)
+  overflow: hidden
+
