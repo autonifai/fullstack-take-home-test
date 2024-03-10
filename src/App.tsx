@@ -1,15 +1,9 @@
 import './App.sass';
-import { TableHeader } from './TableHeader';
-
+import { InvoiceList } from './InvoiceList';
 
 function App() {
   return (
-      <ul className='invoice-table'>
-        <TableHeader className='invoice-table__header'/>
-        <li className='invoice-table__invoice'>
-          <p></p>
-        </li>
-      </ul>
+      <InvoiceList className='invoice-list' />
   );
 }
 

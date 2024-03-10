@@ -1,4 +1,5 @@
 import { TableRow } from '../TableRow';
+import './TableHeader.sass'
 
 export default function TableHeader({ className }: TableHeaderPros) {
   return (
