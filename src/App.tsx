@@ -3,7 +3,7 @@ import { InvoiceList } from './InvoiceList';
 
 function App() {
   return (
-      <InvoiceList className='invoice-list' />
+      <InvoiceList className='app__invoice-list' />
   );
 }
 
