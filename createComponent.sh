@@ -17,10 +17,12 @@ export {
 
 touch "./src/$ComponentName/$ComponentName.sass"
 
-echo "export default function $ComponentName() {
+echo "import './$ComponentName.sass'
+
+export default function $ComponentName() {
   return (
     
-  );
+  )
 }" > "./src/$ComponentName/$ComponentName.tsx"
 
 echo "Component $ComponentName succesfully created."
