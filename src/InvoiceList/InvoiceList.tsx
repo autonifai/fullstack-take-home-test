@@ -1,5 +1,5 @@
-import { InvoiceListHeader } from '../InvoiceListHeader';
-import { InvoiceListItem } from '../InvoiceListItem';
+import { InvoiceListHeader } from './InvoiceListHeader';
+import { InvoiceListItem } from './InvoiceListItem';
 import './InvoiceList.sass'
 
 export default function InvoiceList({ className }: InvoiceListProps) {
