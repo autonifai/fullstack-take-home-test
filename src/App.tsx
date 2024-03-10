@@ -5,8 +5,8 @@ import { TableHeader } from './TableHeader';
 function App() {
   return (
       <ul className='invoice-table'>
-        <TableHeader className='test'/>
-        <li className='invoice-list__invoice'>
+        <TableHeader className='invoice-table__header'/>
+        <li className='invoice-table__invoice'>
           <p></p>
         </li>
       </ul>
