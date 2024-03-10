@@ -7,10 +7,10 @@ export default function InvoiceList({ className }: InvoiceListProps) {
     <>
       <TableHeader className='invoice-list__header'/>
       <ol className={`invoice-list ${className}`}>
-        <InvoiceListItem className='invoicelist__invoice-list-item' />
-        <InvoiceListItem className='invoicelist__invoice-list-item' />
-        <InvoiceListItem className='invoicelist__invoice-list-item' />
-        <InvoiceListItem className='invoicelist__invoice-list-item' />
+        <InvoiceListItem className='invoice-list__invoice-list-item' />
+        <InvoiceListItem className='invoice-list__invoice-list-item' />
+        <InvoiceListItem className='invoice-list__invoice-list-item' />
+        <InvoiceListItem className='invoice-list__invoice-list-item' />
       </ol>
     </>
   )

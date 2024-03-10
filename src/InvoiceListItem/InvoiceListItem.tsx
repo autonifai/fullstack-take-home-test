@@ -1,4 +1,5 @@
 import { TableRow } from '../TableRow';
+import './InvoiceListItem.sass'
 
 export default function InvoiceListItem({ className }: InvoiceListItemProps) {
   return (
