@@ -9,7 +9,7 @@ export default function LineInvoice({ className, invoice }: LineInvoiceProps) {
         <p className='line-invoice__value'>{invoice.name}</p>
         <p className='line-invoice__value'>{invoice.vendor}</p>
         <p className='line-invoice__value'>{invoice.description}</p>
-        <p className='line-invoice__value'>{invoice.dueDate.format()}</p>
+        <p className='line-invoice__value'>{invoice.dueDate.format('DD/MM/YY')}</p>
         <p className='line-invoice__value'>{invoice.totalAmount}</p>
         <button className='line-invoice__review'>Review</button>
       </ListRow>
