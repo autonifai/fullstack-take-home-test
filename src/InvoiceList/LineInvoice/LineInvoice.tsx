@@ -1,19 +1,9 @@
 import Invoice from '../Invoice';
 import { ListRow } from '../ListRow';
+import formatAmount from '../formatAmount';
 import './LineInvoice.sass'
 
 export default function LineInvoice({ className, invoice }: LineInvoiceProps) {
-  function formatAmount(amount: number, currencyCode: string) {
-    const formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currencyCode,
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-  
-    return formatter.format(amount);
-  }
-
   return (
     <li className={`line-invoice ${className}`}>
       <ListRow className='line-invoice__wrapper'>
