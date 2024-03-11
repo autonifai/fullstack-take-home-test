@@ -1,7 +1,7 @@
 import { InvoiceListHeader } from './InvoiceListHeader';
 import { LineInvoice } from './LineInvoice';
 import './InvoiceList.sass'
-import invoiceFixture from './LineInvoice/invoiceFixture';
+import invoiceFixture from '../../tests/Fixtures/invoiceFixture';
 
 export default function InvoiceList({ className }: InvoiceListProps) {
   return (

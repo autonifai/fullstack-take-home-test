@@ -1,4 +1,4 @@
-import getFormatter from './getFormatter'
+import getFormatter from '../../Common/getFormatter'
 
 describe('getFormatter', () => {
   it('should return the same formatter instance given the same currency code', () => {

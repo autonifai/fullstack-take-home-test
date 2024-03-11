@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import LineInvoice from './LineInvoice';
-import invoiceFixture from './invoiceFixture';
+import LineInvoice from '../../../../Invoice/InvoiceList/LineInvoice/LineInvoice';
+import invoiceFixture from '../../../Fixtures/invoiceFixture';
 import dayjs from 'dayjs';
 
 describe('LineInvoice', () => {

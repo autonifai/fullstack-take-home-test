@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import InvoiceListHeader from './InvoiceListHeader';
+import InvoiceListHeader from '../../../../Invoice/InvoiceList/InvoiceListHeader/InvoiceListHeader';
 
 describe('InvoiceListHeader', () => {
   it('should render every label', () => {

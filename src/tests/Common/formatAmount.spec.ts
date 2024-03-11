@@ -1,4 +1,4 @@
-import formatAmount from './formatAmount';
+import formatAmount from '../../Common/formatAmount';
 
 describe('formatAmount', () => {
   it('should format the amount number to the american standard', () => {
