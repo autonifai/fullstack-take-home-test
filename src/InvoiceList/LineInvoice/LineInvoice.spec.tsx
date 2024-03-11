@@ -25,4 +25,14 @@ describe('LineInvoice', () => {
 
     expect(dueDate).toBeInTheDocument()
   })
+
+  it('should display the ammount properly formatted', () => {
+    invoiceFixture.totalAmount = 16000.0
+
+    render(<LineInvoice invoice={invoiceFixture} />)
+
+    const dueDate = screen.getByText('$16,000.00')
+
+    expect(dueDate).toBeInTheDocument()
+  })
 })
