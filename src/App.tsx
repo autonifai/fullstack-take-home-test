@@ -1,5 +1,5 @@
 import './App.sass';
-import { InvoiceList } from './InvoiceList';
+import { InvoiceList } from './Invoice/InvoiceList';
 
 function App() {
   return (

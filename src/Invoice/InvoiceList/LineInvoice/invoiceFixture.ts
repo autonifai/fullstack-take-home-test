@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
-import Invoice from '../Invoice'
-import InvoiceStatus from '../InvoiceStatusEnum'
+import Invoice from '../../Invoice'
+import InvoiceStatus from '../../InvoiceStatusEnum'
 
 const invoiceFixture: Invoice = {
   name: "INV-001",
