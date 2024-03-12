@@ -1,9 +1,9 @@
 import './App.sass';
-import { InvoiceList } from './Invoice/InvoiceList';
+import InvoicesScreen from './Invoice/InvoicesScreen';
 
 function App() {
   return (
-      <InvoiceList className='app__invoice-list' />
+      <InvoicesScreen />
   );
 }
 
