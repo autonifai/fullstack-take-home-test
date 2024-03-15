@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import Invoice from '../../Invoice/Invoice'
+import Invoice from '../../Invoice/domain/Invoice'
 import InvoiceStatus from '../../Invoice/InvoiceStatusEnum'
 
 const invoiceFixture: Invoice = {

@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs';
-import InvoiceStatus from './InvoiceStatusEnum';
+import InvoiceStatus from '../InvoiceStatusEnum';
 
 interface Invoice {
   name: string,

@@ -1,5 +1,5 @@
 import './App.sass';
-import InvoicesScreen from './Invoice/InvoicesScreen';
+import InvoicesScreen from './Invoice/ui/InvoicesScreen';
 
 function App() {
   return (

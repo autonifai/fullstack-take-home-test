@@ -1,4 +1,4 @@
-import { InvoiceList } from './InvoiceList';
+import { InvoiceList } from './ui/InvoiceList';
 
 export {
   InvoiceList,

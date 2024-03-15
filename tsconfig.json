@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "src/tests/Common/formatAmount.spec.ts", "src/tests/Common/getFormatter.spec.ts", "src/tests/Invoice/InvoiceList/InvoiceListHeader/InvoiceListHeader.spec.tsx", "src/tests/Invoice/InvoiceList/LineInvoice/LineInvoice.spec.tsx", "src/tests/Invoice/InvoiceList/ListRow/ListRow.spec.tsx", "src/tests/Fixtures/invoiceFixture.ts"  ]
+, "src/tests/Common/formatAmount.spec.ts", "src/tests/Common/getFormatter.spec.ts", "src/tests/Invoice/ui/InvoiceList/InvoiceListHeader/InvoiceListHeader.spec.tsx", "src/tests/Invoice/ui/InvoiceList/LineInvoice/LineInvoice.spec.tsx", "src/tests/Invoice/ui/InvoiceList/ListRow/ListRow.spec.tsx", "src/tests/Fixtures/invoiceFixture.ts", "src/Invoice/infrastructure/.ts"  ]
 }

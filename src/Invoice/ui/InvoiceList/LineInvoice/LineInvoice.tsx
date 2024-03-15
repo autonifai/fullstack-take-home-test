@@ -1,6 +1,6 @@
-import Invoice from '../../Invoice';
+import Invoice from '../../../domain/Invoice';
 import { ListRow } from '../ListRow';
-import { formatAmount } from '../../../Common';
+import { formatAmount } from '../../../../Common';
 import './LineInvoice.sass'
 
 export default function LineInvoice({ className, invoice }: LineInvoiceProps) {

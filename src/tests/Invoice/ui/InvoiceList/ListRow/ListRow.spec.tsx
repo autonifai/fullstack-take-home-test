@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ListRow from '../../../../Invoice/InvoiceList/ListRow/ListRow';
+import ListRow from '../../../../../Invoice/ui/InvoiceList/ListRow/ListRow';
 
 describe('ListRow', () => {
   it('should render every child', () => {

@@ -1,0 +1,50 @@
+const apiGetAllInvoicesFixture = [
+  {
+    "number": "INV-005",
+    "pre_tax_amount": 600.0,
+    "po_number": "PO1234E",
+    "discount": 0.0,
+    "date_of_issue": "2024-05-15",
+    "tax_amount": 120.0,
+    "vendor": "Vendor E",
+    "id": 5,
+    "due_date": "2024-06-14",
+    "total_amount": 720.0,
+    "vendor_bank_details": "BANK12345E",
+    "currency": "CAD",
+    "gl_code": "GL005",
+    "vendor_tax_registration_number": "TAX123456E",
+    "payment_terms": 30,
+    "vendor_address": "456 Vendor Rd, City I",
+    "description": "10x Tool E",
+    "cost_centre": "Cost Centre E",
+    "billing_address": "789 Billing Ave, City J",
+    "line_item_details": "10x Tool E",
+    "status": "TO_BE_VALIDATED"
+  },
+  {
+    "number": "INV-006",
+    "pre_tax_amount": 3200.0,
+    "po_number": "PO1234F",
+    "discount": 100.0,
+    "date_of_issue": "2024-06-20",
+    "tax_amount": 640.0,
+    "vendor": "Vendor F",
+    "id": 6,
+    "due_date": "2024-07-20",
+    "total_amount": 3740.0,
+    "vendor_bank_details": "BANK12345F",
+    "currency": "AUD",
+    "gl_code": "GL006",
+    "vendor_tax_registration_number": "TAX123456F",
+    "payment_terms": 30,
+    "vendor_address": "654 Vendor Ln, City K",
+    "description": "4x Equipment F",
+    "cost_centre": "Cost Centre F",
+    "billing_address": "987 Billing Blvd, City L",
+    "line_item_details": "4x Equipment F",
+    "status": "TO_BE_VALIDATED"
+  }
+]
+
+export default apiGetAllInvoicesFixture

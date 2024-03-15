@@ -1,7 +1,7 @@
 import { InvoiceListHeader } from './InvoiceListHeader';
 import { LineInvoice } from './LineInvoice';
 import './InvoiceList.sass'
-import Invoice from '../Invoice';
+import Invoice from '../../domain/Invoice';
 
 export default function InvoiceList({ className, invoices }: InvoiceListProps) {
 
