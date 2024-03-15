@@ -1,0 +1,13 @@
+.toolbar {
+
+	background: transparent !important;
+
+	.MuiToolbar-root {
+		//border-bottom: 1px solid black;
+		margin-left: auto;
+		svg {
+			color: black;
+			background: transparent;
+		}
+	}
+}
