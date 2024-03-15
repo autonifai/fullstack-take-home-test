@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import InvoiceStatus from '../InvoiceStatusEnum'
 
 export default class InvoiceTransformer {
@@ -8,11 +7,11 @@ export default class InvoiceTransformer {
       preTaxAmount: apiInvoice.pre_tax_amount,
       poNumber: apiInvoice.po_number,
       discount: apiInvoice.discount,
-      dateOfIssue: dayjs(apiInvoice.date_of_issue),
+      dateOfIssue: apiInvoice.date_of_issue,
       taxAmount: apiInvoice.tax_amount,
       vendor: apiInvoice.vendor,
       id: apiInvoice.id,
-      dueDate: dayjs(apiInvoice.due_date),
+      dueDate: apiInvoice.due_date,
       totalAmount: apiInvoice.total_amount,
       vendorBankDetails: apiInvoice.vendor_bank_details,
       currency: apiInvoice.currency,

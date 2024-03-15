@@ -17,11 +17,11 @@ describe('LineInvoice', () => {
   })
 
   it('should display the due date properly formatted', () => {
-    invoiceFixture.dueDate = dayjs("01/01/2024")
+    invoiceFixture.dueDate = "01/01/2024"
 
     render(<LineInvoice invoice={invoiceFixture} />)
 
-    const dueDate = screen.getByText(invoiceFixture.dueDate.format('01/01/24'))
+    const dueDate = screen.getByText('01/01/24')
 
     expect(dueDate).toBeInTheDocument()
   })

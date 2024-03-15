@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import Invoice from '../../Invoice/domain/Invoice'
 import InvoiceStatus from '../../Invoice/InvoiceStatusEnum'
 
@@ -7,11 +6,11 @@ const invoiceFixture: Invoice = {
   preTaxAmount: 1000.0,
   poNumber: "PO1234A",
   discount: 0.0,
-  dateOfIssue: dayjs("2024-01-01"),
+  dateOfIssue: "2024-01-01",
   taxAmount: 200.0,
   vendor: "Vendor A",
   id: 1,
-  dueDate: dayjs("2024-01-31"),
+  dueDate: "2024-01-31",
   totalAmount: 1200.0,
   vendorBankDetails: "BANK12345A",
   currency: "USD",

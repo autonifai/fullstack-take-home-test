@@ -1,4 +1,3 @@
-import { Dayjs } from 'dayjs';
 import InvoiceStatus from '../InvoiceStatusEnum';
 
 interface Invoice {
@@ -6,11 +5,11 @@ interface Invoice {
   preTaxAmount: number,
   poNumber: string,
   discount: number,
-  dateOfIssue: Dayjs,
+  dateOfIssue: string,
   taxAmount: number,
   vendor: string,
   id: number,
-  dueDate: Dayjs,
+  dueDate: string,
   totalAmount: number,
   vendorBankDetails: string,
   currency: string,

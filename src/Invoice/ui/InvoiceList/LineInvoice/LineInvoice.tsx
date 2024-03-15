@@ -2,6 +2,7 @@ import Invoice from '../../../domain/Invoice';
 import { ListRow } from '../ListRow';
 import { formatAmount } from '../../../../Common';
 import './LineInvoice.sass'
+import { formatDate } from '../../../../Common';
 
 export default function LineInvoice({ className, invoice }: LineInvoiceProps) {
   return (
@@ -10,7 +11,7 @@ export default function LineInvoice({ className, invoice }: LineInvoiceProps) {
         <p className='line-invoice__value'>{invoice.name}</p>
         <p className='line-invoice__value'>{invoice.vendor}</p>
         <p className='line-invoice__value'>{invoice.description}</p>
-        <p className='line-invoice__value'>{invoice.dueDate.format('DD/MM/YY')}</p>
+        <p className='line-invoice__value'>{formatDate(invoice.dueDate)}</p>
         <p className='line-invoice__value'>{formatAmount(invoice.totalAmount, invoice.currency)}</p>
         <button className='line-invoice__review'>Review</button>
       </ListRow>
