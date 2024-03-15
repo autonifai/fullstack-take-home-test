@@ -6,11 +6,12 @@ import TopBar from "./components/TopBar";
 import {Grid} from "@mui/material";
 
 function App() {
-	const [drawerOpen, setDrawerOpen] = useState(false);
+	const [drawerOpen, setDrawerOpen] = useState(true);
 
 	const toggleDrawer = () => {
 		setDrawerOpen(!drawerOpen);
 	};
+
 	return (
 		<Grid container>
 			<Grid
