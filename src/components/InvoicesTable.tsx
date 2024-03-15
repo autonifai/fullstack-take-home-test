@@ -6,14 +6,21 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import SquareIcon from '@mui/icons-material/Square';
+import {Button} from "@mui/material";
 
 const InvoicesTable = () => {
 	return (
-		<TableContainer component={Paper} style={{ maxWidth: '100%' }}>
+		<TableContainer
+			component={Paper}
+			style={{ maxWidth: '100%' }}
+			sx={{ overflowX: 'auto' }}
+			id={"invoices-table"}
+		>
 			<Table>
 				<TableHead>
 					<TableRow>
-						<TableCell style={{ width: '20px', height: '20px', backgroundColor: 'pink', borderRadius: '4px' }}></TableCell>
+						<TableCell><SquareIcon /></TableCell>
 						<TableCell>Invoice Number</TableCell>
 						<TableCell>Vendor Name</TableCell>
 						<TableCell>Invoice Description</TableCell>
@@ -25,22 +32,30 @@ const InvoicesTable = () => {
 				<TableBody>
 					{/* Aqui você colocaria os dados das linhas, caso houvesse */}
 					<TableRow>
-						<TableCell style={{ width: '20px', height: '20px', backgroundColor: 'pink', borderRadius: '4px' }}></TableCell>
+						<TableCell><SquareIcon /></TableCell>
 						<TableCell>123456</TableCell>
 						<TableCell>Vendor A</TableCell>
 						<TableCell>Description A</TableCell>
 						<TableCell>2024-03-30</TableCell>
 						<TableCell>$100.00</TableCell>
-						<TableCell></TableCell>
+						<TableCell className={"invoice-button-container"}>
+							<Button>
+								Review
+							</Button>
+						</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell style={{ width: '20px', height: '20px', backgroundColor: 'pink', borderRadius: '4px' }}></TableCell>
+						<TableCell><SquareIcon /></TableCell>
 						<TableCell>789012</TableCell>
 						<TableCell>Vendor B</TableCell>
 						<TableCell>Description B</TableCell>
 						<TableCell>2024-04-15</TableCell>
 						<TableCell>$200.00</TableCell>
-						<TableCell></TableCell>
+						<TableCell className={"invoice-button-container"}>
+							<Button>
+								Review
+							</Button>
+						</TableCell>
 					</TableRow>
 				</TableBody>
 			</Table>

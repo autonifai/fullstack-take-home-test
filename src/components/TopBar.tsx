@@ -10,10 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 const TopBar = (
 	{
 		toggleDrawer,
-		drawerOpen = false,
+		dispatch
 	} : {
 		toggleDrawer: any,
-		drawerOpen: boolean,
+		dispatch: any,
 	}
 ) => {
 	return (
@@ -22,7 +22,7 @@ const TopBar = (
 				<IconButton
 					color="inherit"
 					aria-label="open drawer"
-					onClick={() => toggleDrawer(!drawerOpen)}
+					onClick={() => dispatch(toggleDrawer())}
 					edge="start"
 					sx={{ mr: 2, display: { md: 'none' } }}
 				>

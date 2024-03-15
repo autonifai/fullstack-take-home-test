@@ -1,40 +1,12 @@
-import React, {useState} from 'react';
-import './styles/main.scss';
-import Menu from "./components/Menu";
+import React from 'react';
 import InvoicesTable from "./components/InvoicesTable";
-import TopBar from "./components/TopBar";
 import {Grid} from "@mui/material";
+import Wrapper from "./components/Wrapper";
 
 function App() {
-	const [drawerOpen, setDrawerOpen] = useState(true);
-
-	const toggleDrawer = () => {
-		setDrawerOpen(!drawerOpen);
-	};
 
 	return (
-		<Grid container>
-			<Grid
-				xs={2}
-				md={2}
-				lg={2}
-				xl={2}
-				item
-			>
-				{
-					drawerOpen && (
-						<Menu
-							drawerOpen={drawerOpen}
-							setDrawerOpen={toggleDrawer}
-						/>
-					)
-				}
-			</Grid>
-			<TopBar
-				toggleDrawer={toggleDrawer}
-				drawerOpen={drawerOpen}
-			/>
-
+		<Wrapper>
 			<Grid
 				marginTop={10}
 				xs
@@ -42,7 +14,8 @@ function App() {
 			>
 				<InvoicesTable/>
 			</Grid>
-		</Grid>
+		</Wrapper>
+
 	);
 }
 
