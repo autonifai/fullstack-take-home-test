@@ -18,9 +18,11 @@ const Menu = (
 	{
 		drawerOpen = true,
 		setDrawerOpen,
+		dispatch,
 	}: {
 		drawerOpen: boolean,
 		setDrawerOpen: any
+		dispatch: any,
 	}
 ) => {
 
@@ -38,7 +40,7 @@ const Menu = (
 				},
 			}}
 			open={drawerOpen}
-			onClose={() => setDrawerOpen(!drawerOpen)}
+			onClose={() => dispatch(setDrawerOpen())}
 		>
 			<div>
 				<Typography variant="h6" id={"logo"}>
