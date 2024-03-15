@@ -1,6 +1,7 @@
 .toolbar {
-
-	background: transparent !important;
+	z-index: 1300;
+	background: white !important;
+	width: 100%;
 
 	.MuiToolbar-root {
 		//border-bottom: 1px solid black;
