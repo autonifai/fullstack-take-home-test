@@ -12,55 +12,70 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import TopBar from "./TopBar";
 
 
-const Menu = () => {
+const Menu = (
+	{
+		drawerOpen = true,
+		setDrawerOpen,
+	}: {
+		drawerOpen: boolean,
+		setDrawerOpen: any
+	}
+) => {
 
 	return (
-		<div>
-			<Drawer
-				variant="permanent"
-				id={"menu"}
-			>
-				<div>
-					<Typography variant="h6" id={"logo"}>
-						Logo
-					</Typography>
-				</div>
-				<List>
-					<ListItem>
-						<ListItemIcon><HomeIcon/></ListItemIcon>
-						<ListItemText primary="Home"/>
-					</ListItem>
-					<ListItem>
-						<ListItemIcon><CloudUploadIcon/></ListItemIcon>
-						<ListItemText primary="Upload Invoice"/>
-					</ListItem>
-					<ListItem>
-						<ListItemIcon><AssignmentIcon/></ListItemIcon>
-						<ListItemText primary="Review Documents"/>
-					</ListItem>
-					<ListItem>
-						<ListItemIcon><CheckCircleIcon/></ListItemIcon>
-						<ListItemText primary="Validate Invoices"/>
-					</ListItem>
-					<ListItem>
-						<ListItemIcon><PlaylistAddCheckIcon/></ListItemIcon>
-						<ListItemText primary="Invoice Approvals"/>
-					</ListItem>
-					<ListItem>
-						<ListItemIcon><MonetizationOnIcon/></ListItemIcon>
-						<ListItemText primary="Payments"/>
-					</ListItem>
-					<ListItem>
-						<ListItemIcon><AssessmentIcon/></ListItemIcon>
-						<ListItemText primary="Reports"/>
-					</ListItem>
-				</List>
-			</Drawer>
-			<TopBar />
-		</div>
+		<Drawer
+			id={"menu"}
+			variant={"permanent"}
+			anchor="left"
+			sx={{
+				width: 240,
+				flexShrink: 0,
+				'& .MuiDrawer-paper': {
+					width: 240,
+					boxSizing: 'border-box',
+				},
+			}}
+			open={drawerOpen}
+			onClose={() => setDrawerOpen(!drawerOpen)}
+		>
+			<div>
+				<Typography variant="h6" id={"logo"}>
+					Logo
+				</Typography>
+			</div>
+			<List>
+				<ListItem>
+					<ListItemIcon><HomeIcon/></ListItemIcon>
+					<ListItemText primary="Home"/>
+				</ListItem>
+				<ListItem>
+					<ListItemIcon><CloudUploadIcon/></ListItemIcon>
+					<ListItemText primary="Upload Invoice"/>
+				</ListItem>
+				<ListItem>
+					<ListItemIcon><AssignmentIcon/></ListItemIcon>
+					<ListItemText primary="Review Documents"/>
+				</ListItem>
+				<ListItem>
+					<ListItemIcon><CheckCircleIcon/></ListItemIcon>
+					<ListItemText primary="Validate Invoices"/>
+				</ListItem>
+				<ListItem>
+					<ListItemIcon><PlaylistAddCheckIcon/></ListItemIcon>
+					<ListItemText primary="Invoice Approvals"/>
+				</ListItem>
+				<ListItem>
+					<ListItemIcon><MonetizationOnIcon/></ListItemIcon>
+					<ListItemText primary="Payments"/>
+				</ListItem>
+				<ListItem>
+					<ListItemIcon><AssessmentIcon/></ListItemIcon>
+					<ListItemText primary="Reports"/>
+				</ListItem>
+			</List>
+		</Drawer>
 	);
 };
 
