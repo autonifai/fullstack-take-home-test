@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import LineInvoice from '../../../../../Invoice/ui/InvoiceList/LineInvoice/LineInvoice';
 import invoiceFixture from '../../../../Fixtures/invoiceFixture';
-import dayjs from 'dayjs';
 
 describe('LineInvoice', () => {
   it('should display the name, vendor and description', () => {
