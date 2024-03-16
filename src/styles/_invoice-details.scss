@@ -1,0 +1,45 @@
+#invoice-details {
+	#pdf-holder, .info-holder {
+		background-color: #D1D1D1;
+	}
+
+	.heading-title {
+		font-weight: 700;
+	}
+
+	.validating-span {
+		background-color: #323FCF;
+		padding: 10px;
+		color: white;
+		border-radius: 35px;
+	}
+
+	.info-holder {
+		padding: 5px;
+		border-radius: 10px;
+		border: 1px solid black;
+		max-width: 90%;
+
+		.info-title {
+			font-weight: 700;
+		}
+
+		.info-description {
+			font-weight: 400;
+			font-size: 12px;
+		}
+	}
+	.validate-button, .reject-button {
+		color: white;
+		min-width: 50%;
+		min-height: 50px;
+	}
+
+	.validate-button {
+		background-color: #76A34A;
+	}
+
+	.reject-button {
+		background-color: #DA0062;
+	}
+}

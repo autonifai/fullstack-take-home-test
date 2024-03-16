@@ -49,7 +49,7 @@ Each row of this table should have a `Review` button.
 
 As mentioned before, each row in the invoice list has a `Review` button. When this button is clicked, the invoice details should be displayed. 
 
-The invoice details screen has 2 sections: `Vendor Details` and `Invoice Details`.
+The invoice details screen has 2 sections: `Vendor InvoiceDetails` and `Invoice InvoiceDetails`.
 
 At the bottom, it has 2 buttons: `Validate` and `Reject`, which modify the status of the invoice. 
 

@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import SquareIcon from '@mui/icons-material/Square';
 import {Button} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 const InvoicesTable = (
 	{
@@ -16,6 +17,7 @@ const InvoicesTable = (
 		invoices: any[]
 	}
 ) => {
+	const navigate = useNavigate()
 	return (
 		<TableContainer
 			component={Paper}
@@ -50,12 +52,12 @@ const InvoicesTable = (
 								<TableCell>{i.vendor}</TableCell>
 								<TableCell>{i.description}</TableCell>
 								<TableCell>{i.due_date}</TableCell>
-								<TableCell>{i.total_amount.toLocaleString("en-US",{
+								<TableCell>{i.total_amount.toLocaleString("en-GB",{
 									style: 'currency',
 									currency: i.currency
 								})}</TableCell>
 								<TableCell className={"invoice-button-container"}>
-									<Button>
+									<Button onClick={() => navigate(`/invoice/details/${i.id}`)}>
 										Review
 									</Button>
 								</TableCell>

@@ -10,14 +10,21 @@ import {
 } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Invoices from "./pages/Invoices";
+import Details from "./pages/Invoices/Details";
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
+
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Invoices/>,
+		errorElement: <NotFound />
+	},
+	{
+		path: "/invoice/details/:id",
+		element: <Details/>,
 		errorElement: <NotFound />
 	},
 ]);
