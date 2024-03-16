@@ -1,9 +1,9 @@
 import './App.sass';
-import InvoicesScreen from './Invoice/ui/InvoicesScreen';
+import { Router } from '@src/Navigation';
 
 function App() {
   return (
-      <InvoicesScreen />
+      <Router />
   );
 }
 
