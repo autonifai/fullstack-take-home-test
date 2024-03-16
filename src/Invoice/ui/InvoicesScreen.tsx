@@ -1,13 +1,8 @@
 import InvoiceService from '../application/InvoiceService';
 import useInvoices from './useInvoices';
 import { InvoiceList } from './InvoiceList';
-import RestInvoiceRepository from '../infrastructure/RestInvoiceRepository';
-import { HttpClient } from '../../Common';
 
-export default function InvoicesScreen() {
-  const httpClient = new HttpClient('http://localhost:8000')
-  const invoiceRepository = new RestInvoiceRepository(httpClient)
-  const invoiceService = new InvoiceService(invoiceRepository)
+export default function InvoicesScreen({ invoiceService }: InvoicesScreenProps) {
 
   const { invoices, isLoading } = useInvoices(invoiceService)
 
@@ -22,4 +17,8 @@ export default function InvoicesScreen() {
           />}
     </div>
   )
+}
+
+type InvoicesScreenProps = {
+  invoiceService: InvoiceService
 }
