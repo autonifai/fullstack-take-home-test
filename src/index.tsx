@@ -3,18 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './styles/main.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import {Provider} from 'react-redux';
 import store from './store';
+import {
+	createBrowserRouter,
+	RouterProvider,
+} from "react-router-dom";
+import NotFound from "./pages/NotFound";
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <App/>,
+		errorElement: <NotFound />
+	},
+]);
 
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App/>
+			{/*<App/>*/}
+			<RouterProvider router={router} />
+
 		</Provider>
 	</React.StrictMode>
 );
