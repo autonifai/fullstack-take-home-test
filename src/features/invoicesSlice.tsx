@@ -40,6 +40,30 @@ export const retrieveInvoice = createAsyncThunk(
 	}
 );
 
+export const validateInvoice = createAsyncThunk(
+	'invoices/validateInvoice',
+	async (id: number | undefined = 0) => {
+		try {
+			await Request.post(`invoices/${id}/approval`);
+			return id;
+		} catch (error) {
+			throw new Error('Failed to fetch invoices');
+		}
+	}
+);
+
+export const rejectInvoice = createAsyncThunk(
+	'invoices/rejectInvoice',
+	async (id: number | undefined = 0) => {
+		try {
+			await Request.delete(`invoices/${id}/approval`);
+			return id;
+		} catch (error) {
+			throw new Error('Failed to fetch invoices');
+		}
+	}
+);
+
 export const invoicesSlice = createSlice({
 	name: 'invoices',
 	initialState,
@@ -68,8 +92,32 @@ export const invoicesSlice = createSlice({
 			})
 			.addCase(retrieveInvoice.rejected, (state, action) => {
 				state.loading = false;
-				state.error = action.error.message || 'Failed to fetch invoices';
+				state.error = action.error.message || 'Failed to fetch invoice';
 			})
+			.addCase(validateInvoice.pending, (state) => {
+				state.loading = true;
+			})
+			.addCase(validateInvoice.fulfilled, (state, action) => {
+				state.loading = false;
+				state.currentInvoice = action.payload;
+				state.error = null;
+			})
+			.addCase(validateInvoice.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.error.message || 'Failed to validate invoices';
+			})
+			.addCase(rejectInvoice.pending, (state) => {
+				state.loading = true;
+			})
+			.addCase(rejectInvoice.fulfilled, (state, action) => {
+				state.loading = false;
+				state.currentInvoice = action.payload;
+				state.error = null;
+			})
+			.addCase(rejectInvoice.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.error.message || 'Failed to reject invoices';
+			});
 	},
 });
 

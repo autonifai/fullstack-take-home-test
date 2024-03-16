@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store";
 import {useEffect} from "react";
-import {fetchAllInvoices, retrieveInvoice} from "../../features/invoicesSlice";
-import {Grid} from "@mui/material";
+import {fetchAllInvoices, rejectInvoice, retrieveInvoice, validateInvoice} from "../../features/invoicesSlice";
+import {Button, Grid} from "@mui/material";
 import InvoicesTable from "../../components/InvoicesTable";
 import Wrapper from "../../components/Wrapper";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import VendorDetails from "../../components/Invoices/Details/VendorDetails";
 import InvoiceDetails from "../../components/Invoices/InvoiceDetails";
@@ -17,6 +17,7 @@ function Details() {
 	const currentInvoice = useSelector((state: any) => state.invoices.currentInvoice);
 	const loading = useSelector((state: any) => state.invoices.loading);
 	const invoiceId = parseInt(useParams().id as string);
+	const navigate = useNavigate();
 
 
 	useEffect(() => {
@@ -165,6 +166,58 @@ function Details() {
 						</Typography>
 					</Grid>
 					<InvoiceDetails currentInvoice={currentInvoice} />
+
+					<Grid
+						xs={12}
+						sm={12}
+						md={12}
+						lg={12}
+						xl={12}
+						marginTop={2}
+						marginBottom={2}
+						justifyContent={"center"}
+						item
+						container
+					>
+						<Grid
+							xs={12}
+							sm={12}
+							md={6}
+							lg={6}
+							xl={6}
+							style={{ display: 'flex', justifyContent: 'center' }}
+							item
+						>
+							<Button
+								onClick={() => {
+									dispatch(validateInvoice(currentInvoice.id));
+									navigate("/");
+								}}
+								className={'validate-button'}
+							>
+								Validate
+							</Button>
+						</Grid>
+						<Grid
+							xs={12}
+							sm={12}
+							md={6}
+							lg={6}
+							xl={6}
+							style={{ display: 'flex', justifyContent: 'center' }}
+							item
+						>
+							<Button
+								onClick={() => {
+									dispatch(rejectInvoice(currentInvoice.id));
+									navigate("/");
+								}}
+								className={'reject-button'}
+							>
+								Reject
+							</Button>
+						</Grid>
+					</Grid>
 				</Grid>
 			<Grid
 				item

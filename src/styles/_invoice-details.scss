@@ -29,4 +29,17 @@
 			font-size: 12px;
 		}
 	}
+	.validate-button, .reject-button {
+		color: white;
+		min-width: 50%;
+		min-height: 50px;
+	}
+
+	.validate-button {
+		background-color: #76A34A;
+	}
+
+	.reject-button {
+		background-color: #DA0062;
+	}
 }
