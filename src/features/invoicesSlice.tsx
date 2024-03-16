@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import Request from "../utils/Request";
 
-interface InvoicesState {
+export interface InvoicesState {
 	invoices: any[];
 	loading: boolean;
 	error: string | null;
