@@ -2,20 +2,27 @@
 
 ComponentName="$1"
 
+ComponentRoute="$2"
+
 if [ -z "$ComponentName" ]; then
   echo "Error: a component name must be provided."
   exit 1
 fi
 
-mkdir -p "./src/$ComponentName"
+if [ -z "$ComponentRoute" ]; then
+  echo "Error: a component route must be provided."
+  exit 1
+fi
+
+mkdir -p "./src/$ComponentRoute/$ComponentName"
 
 echo "import $ComponentName from './$ComponentName';
 
 export {
   $ComponentName
-}" > "./src/$ComponentName/index.ts"
+}" > "./src/$ComponentRoute/$ComponentName/index.ts"
 
-touch "./src/$ComponentName/$ComponentName.sass"
+touch "./src/$ComponentRoute/$ComponentName/$ComponentName.sass"
 
 echo "import './$ComponentName.sass'
 
@@ -23,6 +30,6 @@ export default function $ComponentName() {
   return (
     
   )
-}" > "./src/$ComponentName/$ComponentName.tsx"
+}" > "./src/$ComponentRoute/$ComponentName/$ComponentName.tsx"
 
 echo "Component $ComponentName succesfully created."
