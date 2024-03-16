@@ -12,6 +12,7 @@ export default function Router() {
   return (
       <Routes>
         <Route path="/invoices" element={<InvoicesScreen invoiceService={invoiceService} />} />
+        <Route path="/invoices/:invoiceId" element={<InvoicesScreen invoiceService={invoiceService} />} />
         <Route path="/" element={<Navigate to="/invoices" replace />} />
       </Routes>
   )

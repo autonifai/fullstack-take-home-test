@@ -11,4 +11,8 @@ export default class InvoiceService {
   public async getAll(): Promise<Invoice[]> {
     return this.repository.getAll()
   }
+
+  public async getById(invoiceId: string): Promise<Invoice> {
+    return this.repository.getById(invoiceId)
+  }
 }

@@ -6,7 +6,7 @@ describe('InvoiceService', () => {
     it('should ask the repository for all the invoices', async () => {
       const mockInvoiceRepository = {
         getAll: jest.fn()
-      } as IInvoiceRepository
+      } as Partial<IInvoiceRepository> as IInvoiceRepository
 
       const invoiceService = new InvoiceService(mockInvoiceRepository)
 
