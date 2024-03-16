@@ -2,7 +2,7 @@ import Invoice from '../../Invoice/domain/Invoice'
 import InvoiceStatus from '../../Invoice/InvoiceStatusEnum'
 
 const invoiceFixture: Invoice = {
-  name: "INV-001",
+  number: "INV-001",
   preTaxAmount: 1000.0,
   poNumber: "PO1234A",
   discount: 0.0,

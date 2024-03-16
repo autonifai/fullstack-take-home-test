@@ -6,7 +6,7 @@ describe('LineInvoice', () => {
   it('should display the name, vendor and description', () => {
     render(<LineInvoice invoice={invoiceFixture} />)
 
-    const name = screen.getByText(invoiceFixture.name)
+    const name = screen.getByText(invoiceFixture.number)
     const vendor = screen.getByText(invoiceFixture.vendor)
     const description = screen.getByText(invoiceFixture.description)
 

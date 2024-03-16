@@ -49,7 +49,10 @@
   "jest": {
     "transformIgnorePatterns": [
       "/node_modules/(?!(axios)/)"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@src/(.*)$": "<rootDir>/src/$1"
+    }
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0"

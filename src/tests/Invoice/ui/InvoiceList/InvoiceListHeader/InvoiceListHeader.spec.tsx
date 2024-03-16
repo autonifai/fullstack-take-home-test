@@ -5,10 +5,10 @@ describe('InvoiceListHeader', () => {
   it('should render every label', () => {
     render(<InvoiceListHeader />)
 
-    const nameLabel = screen.getByText('Invoice name')
-    const vendorLabel = screen.getByText('Vendor name')
-    const descriptionLabel = screen.getByText('Invoice description')
-    const dueDateLabel = screen.getByText('Due date')
+    const nameLabel = screen.getByText('Invoice Number')
+    const vendorLabel = screen.getByText('Vendor Name')
+    const descriptionLabel = screen.getByText('Invoice Description')
+    const dueDateLabel = screen.getByText('Due Date')
     const amountLabel = screen.getByText('Amount')
 
     expect(nameLabel).toBeVisible()
