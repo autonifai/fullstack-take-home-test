@@ -1,7 +1,7 @@
 import InvoiceStatus from '../InvoiceStatusEnum';
 
 interface Invoice {
-  name: string,
+  number: string,
   preTaxAmount: number,
   poNumber: string,
   discount: number,

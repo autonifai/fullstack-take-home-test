@@ -9,7 +9,7 @@ export default function LineInvoice({ className, invoice }: LineInvoiceProps) {
   return (
     <li className={`line-invoice ${className}`}>
       <ListRow className='line-invoice__wrapper'>
-        <p className='line-invoice__value'>{invoice.name}</p>
+        <p className='line-invoice__value'>{invoice.number}</p>
         <p className='line-invoice__value'>{invoice.vendor}</p>
         <p className='line-invoice__value'>{invoice.description}</p>
         <p className='line-invoice__value'>{formatDate(invoice.dueDate)}</p>

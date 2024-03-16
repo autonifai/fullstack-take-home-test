@@ -3,7 +3,7 @@ import InvoiceStatus from '../InvoiceStatusEnum'
 export default class InvoiceTransformer {
   public static fromApi(apiInvoice: any) {
     return {
-      name: apiInvoice.number,
+      number: apiInvoice.number,
       preTaxAmount: apiInvoice.pre_tax_amount,
       poNumber: apiInvoice.po_number,
       discount: apiInvoice.discount,
