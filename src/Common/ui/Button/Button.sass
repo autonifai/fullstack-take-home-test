@@ -5,18 +5,21 @@
   border-radius: 5px
   border: none
 
-  &:active
-    background-color: darken(color-palette.$primary, 10%)
-
   &--PRIMARY
-  background-color: #E800EF
+    background-color: color-palette.$primary
+    &:active
+      background-color: darken(color-palette.$primary, 10%)
 
   &--SUBMIT
-    background-color: #63963A
+    background-color: color-palette.$submit
+    &:active
+      background-color: darken(color-palette.$submit, 10%)
   
   &--WARNING
-    background-color: #CF004F
+    background-color: color-palette.$warning
+    &:active
+      background-color: darken(color-palette.$warning, 10%)
   
   &__title
-    color: #FFFFFF
+    color: color-palette.$text-light
     font-weight: 600
