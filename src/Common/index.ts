@@ -1,9 +1,9 @@
 import HttpClient from './HttpClient';
 import formatAmount from './formatAmount';
-import formatDate from './formatDate';
+import DateFormatter from './DateFormatter';
 
 export {
   formatAmount,
   HttpClient,
-  formatDate,
+  DateFormatter,
 }

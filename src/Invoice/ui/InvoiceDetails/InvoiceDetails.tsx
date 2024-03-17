@@ -6,9 +6,10 @@ import { DetailsRow } from './DetailsRow'
 import { Button } from '@src/Common/ui'
 import BUTTON_VARIANTS from '@src/Common/ui/Button/ButtonVariants.enum'
 import { StatusBadge } from './StatusBadge'
+import { DateFormatter } from '@src/Common'
 
 export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDetailsProps) {
-  const { details, isLoading, error } = useInvoiceDetails(invoiceId, invoiceService)
+  const { details } = useInvoiceDetails(invoiceId, invoiceService)
 
   return (
     <div className="invoice-details__wrapper">
@@ -40,9 +41,9 @@ export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDet
                   <Detail className="invoice-details__detail" label="PO Number" value={details?.poNumber} />
                 </DetailsRow>
                 <DetailsRow>
-                  <Detail className="invoice-details__detail" label="Date of Issue" value={details?.dateOfIssue} />
+                  <Detail className="invoice-details__detail" label="Date of Issue" value={details ? DateFormatter.long(details.dateOfIssue) : undefined} />
                   <Detail className="invoice-details__detail" label="Payment Terms" value={details?.paymentTerms} />
-                  <Detail className="invoice-details__detail" label="Due Date" value={details?.dueDate} />
+                  <Detail className="invoice-details__detail" label="Due Date" value={details ? DateFormatter.long(details.dueDate) : undefined} />
                 </DetailsRow>
                 <DetailsRow>
                   <Detail className="invoice-details__detail" label="Invoice Description" value={details?.description} />

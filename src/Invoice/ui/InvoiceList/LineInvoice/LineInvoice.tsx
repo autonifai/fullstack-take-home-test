@@ -1,5 +1,5 @@
 import Invoice from '@src/Invoice/domain/Invoice';
-import { formatAmount, formatDate } from '@src/Common';
+import { DateFormatter, formatAmount } from '@src/Common';
 import { Button } from '@src/Common/ui';
 import { ListRow } from '../ListRow';
 import './LineInvoice.sass'
@@ -15,7 +15,7 @@ export default function LineInvoice({ className, invoice }: LineInvoiceProps) {
         <p className='line-invoice__value'>{invoice.number}</p>
         <p className='line-invoice__value'>{invoice.vendor}</p>
         <p className='line-invoice__value'>{invoice.description}</p>
-        <p className='line-invoice__value'>{formatDate(invoice.dueDate)}</p>
+        <p className='line-invoice__value'>{DateFormatter.short(invoice.dueDate)}</p>
         <p className='line-invoice__value'>{formatAmount(invoice.totalAmount, invoice.currency)}</p>
         <Button className='line-invoice__review'
           title='Review'
