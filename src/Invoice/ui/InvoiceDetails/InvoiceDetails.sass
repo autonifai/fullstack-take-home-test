@@ -1,0 +1,36 @@
+@use '../../../styles/color-palette'
+  
+.invoice-details
+  display: grid
+  grid-template-columns: 1fr 1fr
+    
+  &__wrapper
+
+  &__viewer
+    background-color: color-palette.$filler
+
+  &__data
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    padding: 1rem 
+
+  &__invoice-number
+    font-size: 1.5rem
+    font-weight: 700
+
+  &__section-title
+    font-size: 1.5rem
+    font-weight: 700
+
+  &__section
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: .5rem
+    padding: 0 1rem
+
+  &__detail
+    flex-grow: 1
+    flex-basis: 0
+  
