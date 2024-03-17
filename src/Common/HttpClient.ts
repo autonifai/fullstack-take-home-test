@@ -7,8 +7,8 @@ export default class HttpClient {
 
   }
 
-  public async get(path: string): Promise<any> {
-    return axios.get(this.getUrl(path))
+  public async get(path: string, config?: any): Promise<any> {
+    return axios.get(this.getUrl(path), config)
   }
 
   public async post(path: string, payload?: any): Promise<void> {

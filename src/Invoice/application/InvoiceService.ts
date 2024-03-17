@@ -23,4 +23,10 @@ export default class InvoiceService {
   public async rejectById(invoiceId: string): Promise<void> {
     return this.repository.rejectById(invoiceId)
   }
+
+  public async getInvoicePdf(invoiceNumber: string): Promise<string> {
+    const invoicePdf = await this.repository.getInvoicePdf(invoiceNumber)
+
+    return URL.createObjectURL(invoicePdf)
+  }
 }

@@ -29,4 +29,10 @@ export default class RestInvoiceRepository implements IInvoiceRepository {
   public async rejectById(invoiceId: string): Promise<void> {
     return this.httpClient.delete(`/invoices/${invoiceId}/approval`)
   }
+
+  public async getInvoicePdf(invoiceNumber: string): Promise<Blob> {
+    const { data: invoicePdf } = await this.httpClient.get(`/invoices/${invoiceNumber}/pdf`, { responseType: 'blob' })
+
+    return invoicePdf
+  }
 }
