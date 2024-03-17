@@ -19,7 +19,7 @@ export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDet
             <div className="invoice-details__data">
               <div className="invoice-details__header">
                 <p className="invoice-details__invoice-number">{details?.number}</p>
-                <StatusBadge status={details?.status} />
+                {details && <StatusBadge status={details.status} />}
               </div>
               <div className="invoice-details__section">
                 <p className="invoice-details__section-title">Vendor Details</p>

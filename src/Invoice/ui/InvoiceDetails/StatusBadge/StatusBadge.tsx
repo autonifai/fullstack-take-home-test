@@ -12,6 +12,6 @@ export default function StatusBadge({ className, status }: StatusBadgeProps) {
 
 type StatusBadgeProps = {
   className?: string,
-  status?: InvoiceStatus
+  status: InvoiceStatus
 }
 
