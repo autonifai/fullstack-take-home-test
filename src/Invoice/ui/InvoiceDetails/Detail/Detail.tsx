@@ -4,7 +4,7 @@ export default function Detail({ className, label, value }: DetailProps) {
   return (
     <div className={`detail ${className}`}>
       <p className="detail__label">{label}</p>
-      <p className="detail__value">{value}</p>
+      <p className="detail__value">{value || '--'}</p>
     </div>
   )
 }
@@ -12,5 +12,5 @@ export default function Detail({ className, label, value }: DetailProps) {
 type DetailProps = {
   className?: string,
   label: string,
-  value: string | number,
+  value?: string | number,
 }
