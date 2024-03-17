@@ -1,0 +1,21 @@
+@use '../../../../styles/color-palette'
+  
+.status-badge
+  padding: 0 1rem
+  display: flex
+  height: 24px
+  align-items: center
+  border-radius: 12px
+
+  &--TO_BE_VALIDATED
+    background-color: color-palette.$pending
+  
+  &--APPROVED
+    background-color: color-palette.$submit
+  
+  &--REJECTED
+    background-color: color-palette.$warning
+
+  &__label
+    font-size: 12px
+    color: color-palette.$text-light
