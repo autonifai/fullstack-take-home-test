@@ -3,6 +3,8 @@ import useInvoiceDetails from './useInvoiceDetails'
 import './InvoiceDetails.sass'
 import { Detail } from './Detail'
 import { DetailsRow } from './DetailsRow'
+import { Button } from '@src/Common/ui'
+import BUTTON_VARIANTS from '@src/Common/ui/Button/ButtonVariants.enum'
 
 export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDetailsProps) {
   const { details, isLoading, error } = useInvoiceDetails(invoiceId, invoiceService)
@@ -61,6 +63,18 @@ export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDet
                   <Detail className="invoice-details__detail" label="GL Code" value={details.glCode} />
                   <Detail className="invoice-details__detail" label="Cost Center" value={details.costCentre} />
                 </DetailsRow>
+              </div>
+              <div className="invoice-details__review">
+                <Button
+                  variant={BUTTON_VARIANTS.SUBMIT}
+                  title={'Validate'}
+                  onClick={() => alert('Not implemented yet')}
+                />
+                <Button
+                  variant={BUTTON_VARIANTS.WARNING}
+                  title={'Reject'}
+                  onClick={() => alert('Not implemented yet')}
+                />
               </div>
             </div>
           </div>
