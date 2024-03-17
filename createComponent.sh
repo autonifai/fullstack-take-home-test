@@ -26,10 +26,15 @@ touch "./src/$ComponentRoute/$ComponentName/$ComponentName.sass"
 
 echo "import './$ComponentName.sass'
 
-export default function $ComponentName() {
+export default function $ComponentName({ className }: ${ComponentName}Props) {
   return (
     
   )
-}" > "./src/$ComponentRoute/$ComponentName/$ComponentName.tsx"
+}
+
+type ${ComponentName}Props = {
+  className?: string
+}
+" > "./src/$ComponentRoute/$ComponentName/$ComponentName.tsx"
 
 echo "Component $ComponentName succesfully created."
