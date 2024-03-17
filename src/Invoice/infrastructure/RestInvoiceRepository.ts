@@ -21,4 +21,12 @@ export default class RestInvoiceRepository implements IInvoiceRepository {
 
     return InvoiceTransformer.fromApi(apiInvoice)
   }
+
+  public async aproveById(invoiceId: string): Promise<void> {
+    return this.httpClient.post(`/invoices/${invoiceId}/approval`)
+  }
+
+  public async rejectById(invoiceId: string): Promise<void> {
+    return this.httpClient.delete(`/invoices/${invoiceId}/approval`)
+  }
 }

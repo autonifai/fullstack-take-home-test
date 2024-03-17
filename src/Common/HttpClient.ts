@@ -7,8 +7,16 @@ export default class HttpClient {
 
   }
 
-  async get(path: string): Promise<any> {
+  public async get(path: string): Promise<any> {
     return axios.get(this.getUrl(path))
+  }
+
+  public async post(path: string, payload?: any): Promise<void> {
+    return axios.post(this.getUrl(path), payload)
+  }
+
+  public async delete(path: string): Promise<void> {
+    return axios.delete(this.getUrl(path))
   }
 
   private getUrl(path: string): string {

@@ -12,8 +12,7 @@ export default function useInvoiceDetails(invoiceId: string, invoiceService: Inv
       try {
         setIsLoading(true)
       
-        const details = await invoiceService.getById(invoiceId)
-        setDetails(details)
+        await loadDetails();
       } catch(error) {
         setError(error)
       } finally {
@@ -24,9 +23,34 @@ export default function useInvoiceDetails(invoiceId: string, invoiceService: Inv
     })()
   }, [invoiceId, invoiceService])
 
+  async function validate() {
+    setIsLoading(true)
+
+    await invoiceService.aproveById(invoiceId)
+    await loadDetails()
+
+    setIsLoading(false)
+  }
+
+  async function reject() {
+    setIsLoading(true)
+
+    await invoiceService.rejectById(invoiceId)
+    await loadDetails()
+
+    setIsLoading(false)
+  }
+
+  async function loadDetails() {
+    const details = await invoiceService.getById(invoiceId);
+    setDetails(details);
+  }
+
   return {
     details,
     isLoading,
     error,
+    validate,
+    reject,
   }
 }

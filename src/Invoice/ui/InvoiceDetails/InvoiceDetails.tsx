@@ -9,7 +9,7 @@ import { StatusBadge } from './StatusBadge'
 import { DateFormatter } from '@src/Common'
 
 export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDetailsProps) {
-  const { details } = useInvoiceDetails(invoiceId, invoiceService)
+  const { details, validate, reject } = useInvoiceDetails(invoiceId, invoiceService)
 
   return (
     <div className="invoice-details__wrapper">
@@ -67,12 +67,12 @@ export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDet
                 <Button
                   variant={BUTTON_VARIANTS.SUBMIT}
                   title={'Validate'}
-                  onClick={() => alert('Not implemented yet')}
+                  onClick={() => validate()}
                 />
                 <Button
                   variant={BUTTON_VARIANTS.WARNING}
                   title={'Reject'}
-                  onClick={() => alert('Not implemented yet')}
+                  onClick={() => reject()}
                 />
               </div>
             </div>

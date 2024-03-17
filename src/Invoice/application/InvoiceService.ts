@@ -15,4 +15,12 @@ export default class InvoiceService {
   public async getById(invoiceId: string): Promise<Invoice> {
     return this.repository.getById(invoiceId)
   }
+
+  public async aproveById(invoiceId: string): Promise<void> {
+    return this.repository.aproveById(invoiceId)
+  }
+
+  public async rejectById(invoiceId: string): Promise<void> {
+    return this.repository.rejectById(invoiceId)
+  }
 }
