@@ -1,4 +1,4 @@
-import InvoiceStatus from '../InvoiceStatusEnum';
+import InvoiceStatus from './InvoiceStatus';
 
 interface Invoice {
   number: string,

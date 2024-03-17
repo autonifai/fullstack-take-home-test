@@ -1,4 +1,4 @@
-import InvoiceStatus from '../InvoiceStatusEnum'
+import { InvoiceStatus } from '../domain'
 
 export default class InvoiceTransformer {
   public static fromApi(apiInvoice: any) {
@@ -31,6 +31,10 @@ export default class InvoiceTransformer {
     switch (status) {
       case "TO_BE_VALIDATED":
         return InvoiceStatus.TO_BE_VALIDATED
+      case "APPROVED":
+        return InvoiceStatus.APPROVED
+      case "REJECTED":
+        return InvoiceStatus.REJECTED
       default:
         return InvoiceStatus.UNKONWN
     }

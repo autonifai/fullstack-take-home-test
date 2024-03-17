@@ -1,5 +1,5 @@
 import Invoice from '../../Invoice/domain/Invoice'
-import InvoiceStatus from '../../Invoice/InvoiceStatusEnum'
+import { InvoiceStatus } from '../../Invoice/domain' 
 
 const invoiceFixture: Invoice = {
   number: "INV-001",
