@@ -33,7 +33,7 @@ export default function $ComponentName({ className }: ${ComponentName}Props) {
 }
 
 type ${ComponentName}Props = {
-  className?: string
+  className?: string,
 }
 " > "./src/$ComponentRoute/$ComponentName/$ComponentName.tsx"
 

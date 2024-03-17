@@ -7,6 +7,7 @@ import { Button } from '@src/Common/ui'
 import BUTTON_VARIANTS from '@src/Common/ui/Button/ButtonVariants.enum'
 import { StatusBadge } from './StatusBadge'
 import { DateFormatter } from '@src/Common'
+import { PDFViewer } from '@src/Common/ui/PDFViewer'
 
 export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDetailsProps) {
   const { details, validate, reject } = useInvoiceDetails(invoiceId, invoiceService)
@@ -15,7 +16,7 @@ export default function InvoiceDetails({ invoiceId, invoiceService }: invoiceDet
     <div className="invoice-details__wrapper">
       <div className="invoice-details">
             <div className="invoice-details__viewer">
-              Here the PDF
+              {details && <PDFViewer invoiceNumber={details.number} />}
             </div>
             <div className="invoice-details__data">
               <div className="invoice-details__header">
