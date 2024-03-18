@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"]
+    }
+  },
+  "include": [
+    "src"
+, "src/tests/Common/formatAmount.spec.ts", "src/tests/Common/getFormatter.spec.ts", "src/tests/Invoice/ui/InvoiceList/InvoiceListHeader/InvoiceListHeader.spec.tsx", "src/tests/Invoice/ui/InvoiceList/LineInvoice/LineInvoice.spec.tsx", "src/tests/Invoice/ui/InvoiceList/ListRow/ListRow.spec.tsx", "src/tests/Fixtures/invoiceFixture.ts", "src/Invoice/infrastructure/.ts"  ]
+}

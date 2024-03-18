@@ -1,0 +1,25 @@
+@use '../../../styles/color-palette'
+
+.button
+  padding: .2rem 2rem
+  border-radius: 5px
+  border: none
+
+  &--PRIMARY
+    background-color: color-palette.$primary
+    &:active
+      background-color: darken(color-palette.$primary, 10%)
+
+  &--SUBMIT
+    background-color: color-palette.$submit
+    &:active
+      background-color: darken(color-palette.$submit, 10%)
+  
+  &--WARNING
+    background-color: color-palette.$warning
+    &:active
+      background-color: darken(color-palette.$warning, 10%)
+  
+  &__title
+    color: color-palette.$text-light
+    font-weight: 600

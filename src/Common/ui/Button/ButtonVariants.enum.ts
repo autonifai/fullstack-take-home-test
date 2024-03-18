@@ -1,0 +1,7 @@
+enum BUTTON_VARIANTS {
+  PRIMARY = 'PRIMARY',
+  SUBMIT = 'SUBMIT',
+  WARNING = 'WARNING'
+}
+
+export default BUTTON_VARIANTS
