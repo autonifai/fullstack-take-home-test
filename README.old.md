@@ -72,7 +72,7 @@ To approve or reject an invoice, we offer two separate buttons, which call the r
 
 When the invoice details page is loaded, you also need to display the respective PDF.
 
-PDF files are stored on Amazon S3, on the `s3://take-home-test-invoice-data/` public bucket. You'll need to create an endpoint in the backend project that connects to S3 and allows the frontend to fetch the PDF for visualization.
+PDF files are stored on Amazon S3, on the `https://s3.eu-west-1.amazonaws.com/take-home-test-invoice-data` public bucket. You'll need to create an endpoint in the backend project that connects to S3 and allows the frontend to fetch the PDF for visualization.
 
 ## Backend project
 We provide you with a [backend starter project](https://github.com/autonifai/fullstack-test-backend), which provides the endpoints you'll need to list invoices and display an invoice's details. 

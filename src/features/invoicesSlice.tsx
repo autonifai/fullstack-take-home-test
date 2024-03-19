@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import Request from "../utils/Request";
 
 export interface InvoicesState {
 	invoices: any[];
-	currentInvoice: { },
+	currentInvoice: {},
 	loading: boolean;
 	error: string | null;
 }
