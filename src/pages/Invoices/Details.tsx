@@ -19,7 +19,6 @@ function Details() {
 	const invoiceId = parseInt(useParams().id as string);
 	const navigate = useNavigate();
 
-
 	useEffect(() => {
 		// if user forces the storage erase we load again the invoices table.
 		if (invoices.length == 0) {
@@ -31,7 +30,7 @@ function Details() {
 	]);
 
 	useEffect(() => {
-			dispatch(retrieveInvoice(invoiceId));
+		dispatch(retrieveInvoice(invoiceId));
 	}, [
 		invoiceId,
 		dispatch,
@@ -89,7 +88,8 @@ function Details() {
 					xl={6}
 					item
 				>
-					aqui vai o pfd
+					<iframe src={`${currentInvoice.pdf_link}`} width="100%" height={"100%"}/>
+
 				</Grid>
 				<Grid
 					xs={12}
@@ -145,7 +145,7 @@ function Details() {
 							Vendor details
 						</Typography>
 					</Grid>
-					<VendorDetails currentInvoice={currentInvoice} />
+					<VendorDetails currentInvoice={currentInvoice}/>
 
 					<Grid
 						xs={12}
@@ -165,7 +165,7 @@ function Details() {
 							Invoice details
 						</Typography>
 					</Grid>
-					<InvoiceDetails currentInvoice={currentInvoice} />
+					<InvoiceDetails currentInvoice={currentInvoice}/>
 
 					<Grid
 						xs={12}
@@ -185,7 +185,7 @@ function Details() {
 							md={6}
 							lg={6}
 							xl={6}
-							style={{ display: 'flex', justifyContent: 'center' }}
+							style={{display: 'flex', justifyContent: 'center'}}
 							item
 						>
 							<Button
@@ -204,7 +204,7 @@ function Details() {
 							md={6}
 							lg={6}
 							xl={6}
-							style={{ display: 'flex', justifyContent: 'center' }}
+							style={{display: 'flex', justifyContent: 'center'}}
 							item
 						>
 							<Button
@@ -219,16 +219,16 @@ function Details() {
 						</Grid>
 					</Grid>
 				</Grid>
-			<Grid
-				item
-				xs={12}
-				sm={12}
-				md={12}
-				lg={12}
-				xl={12}
-			>
-				<InvoicesTable invoices={invoices}/>
-			</Grid>
+				<Grid
+					item
+					xs={12}
+					sm={12}
+					md={12}
+					lg={12}
+					xl={12}
+				>
+					<InvoicesTable invoices={invoices}/>
+				</Grid>
 			</Grid>
 		</Wrapper>
 	);

@@ -24,7 +24,6 @@ const TopBar = (
 					aria-label="open drawer"
 					onClick={() => dispatch(toggleDrawer())}
 					edge="start"
-					sx={{ mr: 2, display: { md: 'none' } }}
 				>
 					<MenuIcon />
 				</IconButton>

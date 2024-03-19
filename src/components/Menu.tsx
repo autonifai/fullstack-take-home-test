@@ -60,7 +60,7 @@ const Menu = (
 					<ListItemIcon><AssignmentIcon/></ListItemIcon>
 					<ListItemText primary="Review Documents"/>
 				</ListItem>
-				<ListItem>
+				<ListItem className={"active"}>
 					<ListItemIcon><CheckCircleIcon/></ListItemIcon>
 					<ListItemText primary="Validate Invoices"/>
 				</ListItem>
