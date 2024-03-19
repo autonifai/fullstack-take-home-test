@@ -1,0 +1,38 @@
+#menu {
+	.MuiPaper-root {
+
+		#logo {
+			margin: 0 auto;
+		}
+
+		background: #0C0729;
+		color: white;
+
+		svg {
+			color: white;
+			background: transparent;
+		}
+
+		.active {
+			color: #ED3BF5;
+
+			svg {
+				color: #ED3BF5;
+
+				&:hover {
+					color: white;
+				}
+			}
+
+			&:hover {
+				color: white;
+				font-weight: 900;
+
+				svg {
+					color: white;
+				}
+
+			}
+		}
+	}
+}
